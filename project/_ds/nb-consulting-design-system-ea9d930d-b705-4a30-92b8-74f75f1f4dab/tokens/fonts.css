@@ -1,0 +1,9 @@
+/* NB Consulting — Webfonts
+   Brand guidance (Referencia_Tipografica.txt) specifies system-safe stacks:
+   Georgia/Times New Roman serif for headings, Arial/Helvetica/Inter sans for
+   body + navigation. Georgia and Arial ship on every device, so no serif
+   webfont is needed. Inter is loaded here for a cleaner, more consistent
+   sans weight range than default Arial/Helvetica across platforms — this is
+   not a substitution, Inter is explicitly named as an accepted option in
+   the brand's own reference. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');

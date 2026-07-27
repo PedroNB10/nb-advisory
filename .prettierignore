@@ -1,0 +1,10 @@
+dist/
+.astro/
+node_modules/
+pnpm-lock.yaml
+
+# Prototype handoff bundle — read-only source material, never edited.
+project/
+
+# Original build spec — reference material, left exactly as the user wrote it.
+BUILD-PROMPT.md

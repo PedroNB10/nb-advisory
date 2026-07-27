@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="NB Executive Landing Page" description="Bilingual (PT/EN) single-page executive landing — Recognition, Perspective, How NB Acts, Capabilities, Advisors, Conversation" -->
+<helmet>
+  <script src="./ds-base.js"></script>
+  <link rel="icon" href="assets/logos/favicon-32.png">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--nb-navy-950); }
+    .nb-page { font-family: var(--font-sans); }
+    .nb-section { padding: var(--space-9) var(--content-gutter); }
+    .nb-inner { max-width: var(--content-max-width); margin: 0 auto; }
+    .nb-inner-narrow { max-width: var(--content-max-width-narrow); margin: 0 auto; }
+    a { color: var(--color-link-on-dark); }
+    a:hover { color: var(--color-link-on-dark-hover); }
+    @media (prefers-reduced-motion: no-preference) {
+      .nb-reveal { opacity: 0; transform: translateY(16px); transition: opacity 700ms var(--ease-standard), transform 700ms var(--ease-standard); }
+      .nb-reveal[data-shown] { opacity: 1; transform: none; }
+    }
+    .nb-navlink { color: var(--nb-silver-300); transition: color var(--transition-fast); }
+    .nb-navlink:hover { color: var(--nb-silver-100); }
+    .nb-langtab {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.12em;
+      color: var(--nb-silver-700); padding: 7px 11px; transition: color var(--transition-fast), background var(--transition-fast);
+    }
+    .nb-langtab:hover { color: var(--nb-silver-300); }
+    .nb-langtab[data-active="true"] { color: var(--nb-navy-950); background: var(--nb-silver-300); }
+  </style>
+</helmet>
+
+<div class="nb-page" id="top">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 20; background: rgba(4,9,26,0.86); backdrop-filter: blur(6px); border-bottom: 1px solid var(--color-border-on-dark-subtle);">
+    <div class="nb-inner" style="display:flex; align-items:center; justify-content:space-between; gap: 24px; padding: 20px var(--content-gutter);">
+      <a href="#top" style="display:flex; align-items:center; gap: 12px; text-decoration:none;">
+        <img src="assets/logos/nb-symbol-silver.png" alt="NB" style="height: 30px; width: auto; object-fit: contain;">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--nb-silver-500);">Consulting</span>
+      </a>
+      <nav style="display:flex; align-items:center; gap: 28px;">
+        <a href="#capabilities" class="nb-navlink" style="font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; text-decoration:none;">{{ copy.nav.capabilities }}</a>
+        <a href="#advisors" class="nb-navlink" style="font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; text-decoration:none;">{{ copy.nav.advisors }}</a>
+        <a href="#contact" class="nb-navlink" style="font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; text-decoration:none; color: var(--color-accent-gold);">{{ copy.nav.contact }}</a>
+        <span style="display:inline-flex; align-items:center; border: 1px solid var(--color-border-on-dark-subtle); border-radius: var(--radius-sm); overflow:hidden;">
+          <button class="nb-langtab" data-active="{{ isPt }}" onclick="{{ setPt }}">PT</button>
+          <button class="nb-langtab" data-active="{{ isEn }}" onclick="{{ setEn }}">EN</button>
+          <button class="nb-langtab" data-active="{{ isEs }}" onclick="{{ setEs }}">ES</button>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 1. OPENING — brand + positioning -->
+  <section data-screen-label="01 — Opening" style="min-height: 92vh; display:flex; align-items:center; justify-content:center; background: var(--nb-navy-950) url('./assets/backgrounds/navy-web-1920.png') center/cover no-repeat; text-align:center; padding: var(--space-9) var(--content-gutter);">
+    <div class="nb-inner-narrow">
+      <img src="assets/logos/nb-symbol-silver.png" alt="NB" style="height: 80px; width:auto; object-fit:contain; margin-bottom: var(--space-7);">
+      <h1 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-1); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: 0 0 var(--space-5);">{{ copy.hero.title }}</h1>
+      <p style="font-family: var(--font-sans); font-size: var(--fs-body-lg); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin: 0 auto; max-width: 560px;">{{ copy.hero.sub }}</p>
+    </div>
+  </section>
+
+  <!-- 2. RECOGNITION — the decision-maker's pain -->
+  <section data-screen-label="02 — Recognition" class="nb-section" style="background: var(--nb-navy-900);">
+    <div class="nb-inner nb-reveal" data-shown="{{ true }}">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="1" tone="gold" hint-size="100%,32px">{{ copy.recognition.eyebrow }}</x-import>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: var(--space-5) 0 var(--space-8); max-width: 760px;">{{ copy.recognition.title }}</h2>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-7);">
+        <sc-for list="{{ copy.recognition.points }}" as="point" hint-placeholder-count="4">
+          <p style="font-family: var(--font-sans); font-size: var(--fs-body); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin:0; padding-top: var(--space-4); border-top: 1px solid var(--color-border-on-dark-subtle);">{{ point }}</p>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. THE NB PERSPECTIVE -->
+  <section data-screen-label="03 — NB Perspective" class="nb-section" style="background: var(--nb-navy-950);">
+    <div class="nb-inner">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="2" tone="gold" hint-size="100%,32px">{{ copy.perspective.eyebrow }}</x-import>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-9); margin-top: var(--space-5); align-items:start;">
+        <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin:0;">{{ copy.perspective.title }}</h2>
+        <p style="font-family: var(--font-sans); font-size: var(--fs-body-lg); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin:0;">{{ copy.perspective.body }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. HOW NB ACTS -->
+  <section data-screen-label="04 — How NB Acts" class="nb-section" style="background: var(--nb-navy-900);">
+    <div class="nb-inner">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="3" tone="gold" hint-size="100%,32px">{{ copy.how.eyebrow }}</x-import>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: var(--space-5) 0 var(--space-8); max-width: 760px;">{{ copy.how.title }}</h2>
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8);">
+        <sc-for list="{{ copy.how.items }}" as="item" hint-placeholder-count="3">
+          <div>
+            <div style="width: 40px; height: 1px; background: var(--nb-gold-500); margin-bottom: var(--space-5);"></div>
+            <p style="font-family: var(--font-sans); font-size: var(--fs-body); line-height: var(--lh-relaxed); color: var(--nb-silver-300); margin:0;">{{ item }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CAPABILITIES / PILLARS -->
+  <section id="capabilities" data-screen-label="05 — Capabilities" class="nb-section" style="background: var(--nb-navy-950);">
+    <div class="nb-inner">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="4" tone="gold" hint-size="100%,32px">{{ copy.capabilities.eyebrow }}</x-import>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: var(--space-5) 0 var(--space-8); max-width: 760px;">{{ copy.capabilities.title }}</h2>
+      <div style="display:grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--color-border-on-dark);">
+        <sc-for list="{{ pillars }}" as="pillar" hint-placeholder-count="4">
+          <x-import component-from-global-scope="{{ dsNamespace }}.PillarCard" index="{{ pillar.n }}" name="{{ pillar.name }}" description="{{ pillar.desc }}" hint-size="100%,320px" style="border-right: 1px solid var(--color-border-on-dark);"></x-import>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. ADVISORS -->
+  <section id="advisors" data-screen-label="06 — Advisors" class="nb-section" style="background: var(--nb-navy-900);">
+    <div class="nb-inner">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="5" tone="gold" hint-size="100%,32px">{{ copy.advisors.eyebrow }}</x-import>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: var(--space-5) 0 var(--space-9); max-width: 760px;">{{ copy.advisors.title }}</h2>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-9);">
+        <x-import component-from-global-scope="{{ dsNamespace }}.AdvisorCard" name="Francisco" role="{{ copy.advisors.franciscoRole }}" bio="{{ copy.advisors.franciscoBio }}" hint-size="100%,520px"></x-import>
+        <x-import component-from-global-scope="{{ dsNamespace }}.AdvisorCard" name="Raimundo" role="{{ copy.advisors.raimundoRole }}" bio="{{ copy.advisors.raimundoBio }}" hint-size="100%,520px"></x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CONVERSATION / CTA -->
+  <section id="contact" data-screen-label="07 — Conversation" class="nb-section" style="background: var(--nb-navy-950) url('./assets/backgrounds/navy-web-1920.png') center/cover no-repeat; text-align:center;">
+    <div class="nb-inner-narrow">
+      <div style="width: 40px; height: 1px; background: var(--nb-gold-500); margin: 0 auto var(--space-6);"></div>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: 0 0 var(--space-5);">{{ copy.cta.title }}</h2>
+      <p style="font-family: var(--font-sans); font-size: var(--fs-body-lg); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin: 0 0 var(--space-8);">{{ copy.cta.sub }}</p>
+      <div style="display:flex; gap: var(--space-5); justify-content:center; flex-wrap:wrap;">
+        <x-import component-from-global-scope="{{ dsNamespace }}.Button" variant="primary" size="lg" as="a" href="mailto:nb.admin@icloud.com" hint-size="240px,54px">{{ copy.cta.emailLabel }}</x-import>
+        <x-import component-from-global-scope="{{ dsNamespace }}.Button" variant="secondary" size="lg" as="a" href="https://wa.me/5511950498530" hint-size="200px,54px">{{ copy.cta.whatsappLabel }}</x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid var(--color-border-on-dark-subtle); padding: var(--space-6) var(--content-gutter); background: var(--nb-navy-950);">
+    <div class="nb-inner" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap: var(--space-4);">
+      <img src="assets/logos/nb-symbol-silver.png" alt="NB" style="height: 22px; width:auto; object-fit:contain;">
+      <span style="font-family: var(--font-sans); font-size: var(--fs-small); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--nb-silver-700);">{{ copy.footer.tagline }}</span>
+      <span style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--nb-silver-700);">{{ copy.footer.email }}</span>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'pt' };
+
+  content = {
+    pt: {
+      nav: { advisors: 'Advisors', capabilities: 'Frentes', contact: 'Conversa' },
+      hero: {
+        title: 'Clareza independente antes da execução crítica.',
+        sub: 'A NB apoia líderes em momentos de decisão operacional crítica — revisando riscos, reduzindo ambiguidades e melhorando a qualidade da decisão antes da execução.',
+      },
+      recognition: {
+        eyebrow: 'Reconhecimento da situação',
+        title: 'Decisões avançam rápido. A clareza nem sempre acompanha.',
+        points: [
+          'Decisões críticas avançando rápido demais.',
+          'Muitas reuniões, pouca clareza real.',
+          'Execução em andamento, com perda de confiança.',
+          'Riscos relevantes ainda não explicitados.',
+        ],
+      },
+      perspective: {
+        eyebrow: 'A perspectiva da NB',
+        title: 'Uma camada independente de clareza executiva.',
+        body: 'A NB não substitui a liderança, não vende metodologia pesada e não adiciona complexidade. Ela existe para trazer uma leitura externa e isenta antes que a execução torne uma decisão cara demais para corrigir.',
+      },
+      how: {
+        eyebrow: 'Como a NB atua',
+        title: 'Um processo discreto, aplicado diretamente onde a decisão acontece.',
+        items: [
+          'Uma leitura independente da decisão, sem relatórios extensos.',
+          'Conversas diretas com quem decide — não com comitês.',
+          'Recomendações objetivas, aplicáveis antes da execução avançar.',
+        ],
+      },
+      capabilities: {
+        eyebrow: 'Onde agregamos valor',
+        title: 'Quatro capacidades estratégicas.',
+        descs: [
+          'Uma segunda leitura independente de uma decisão crítica antes que ela se torne execução.',
+          'Uma visão clara de onde a narrativa da organização e sua realidade operacional divergem.',
+          'Intervenção cirúrgica e direcionada onde a execução começou a perder terreno.',
+          'O mesmo julgamento, ampliado por arquitetura digital e inteligência aplicada.',
+        ],
+      },
+      advisors: {
+        eyebrow: 'Os advisors da NB',
+        title: 'Construída sobre duas trajetórias complementares.',
+        franciscoRole: 'Advisor — Decisões & Estabilidade',
+        franciscoBio: 'Décadas liderando operações industriais complexas — fabricação, qualidade, engenharia e logística — em multinacionais como Nestlé, Nestlé Purina, WABCO North America e Johnson Controls, com vivência internacional na Suíça, Chile e América Latina.',
+        raimundoRole: 'Advisor — Arquitetura Digital & IA',
+        raimundoBio: 'Décadas de experiência em liderança industrial, hoje ampliando essa trajetória por meio da arquitetura digital, automação e inteligência artificial aplicada aos negócios.',
+      },
+      cta: {
+        title: 'Vamos conversar sobre uma decisão importante.',
+        sub: 'Quando a execução pode tornar uma decisão cara demais para corrigir, a NB entra antes para trazer clareza.',
+        emailLabel: 'Escrever por e-mail',
+        whatsappLabel: 'Falar no WhatsApp',
+      },
+      footer: { tagline: 'Decisions · Coherence · Stability', email: 'nb.admin@icloud.com' },
+    },
+    en: {
+      nav: { advisors: 'Advisors', capabilities: 'Capabilities', contact: 'Contact' },
+      hero: {
+        title: 'Independent clarity before critical execution.',
+        sub: 'NB supports leaders at moments of critical operational decision — reviewing risk, reducing ambiguity and improving decision quality before execution begins.',
+      },
+      recognition: {
+        eyebrow: 'Recognition',
+        title: 'Decisions move fast. Clarity does not always keep pace.',
+        points: [
+          'Critical decisions advancing too quickly.',
+          'Many meetings, little real clarity.',
+          'Execution underway, confidence eroding.',
+          'Material risks still unspoken.',
+        ],
+      },
+      perspective: {
+        eyebrow: 'The NB perspective',
+        title: 'An independent layer of executive clarity.',
+        body: "NB does not replace leadership, sell heavy methodology, or add complexity. It exists to bring an outside, unconflicted read before execution makes a decision too expensive to correct.",
+      },
+      how: {
+        eyebrow: 'How NB acts',
+        title: 'A discreet process, applied directly where the decision happens.',
+        items: [
+          'An independent read on the decision — no lengthy reports.',
+          'Direct conversations with the decision-maker, not committees.',
+          'Objective recommendations, actionable before execution advances.',
+        ],
+      },
+      capabilities: {
+        eyebrow: 'Where we add value',
+        title: 'Four strategic capabilities.',
+        descs: [
+          'An independent second read on a critical call before it becomes execution.',
+          "A clear view of where the organization's story and its operating reality diverge.",
+          'Targeted, surgical intervention where execution has begun losing ground.',
+          'The same judgment, extended through digital architecture and applied intelligence.',
+        ],
+      },
+      advisors: {
+        eyebrow: "NB's advisors",
+        title: 'Built on two complementary trajectories.',
+        franciscoRole: 'Advisor — Decisions & Stability',
+        franciscoBio: 'Decades leading complex industrial operations — manufacturing, quality, engineering and logistics — across multinationals including Nestlé, Nestlé Purina, WABCO North America and Johnson Controls, with international experience across Switzerland, Chile and Latin America.',
+        raimundoRole: 'Advisor — Digital Architecture & AI',
+        raimundoBio: 'Decades of experience in industrial leadership, now extending that trajectory through digital architecture, automation and artificial intelligence applied to business.',
+      },
+      cta: {
+        title: "Let's talk about an important decision.",
+        sub: 'When execution can make a decision too expensive to correct, NB steps in beforehand to bring clarity.',
+        emailLabel: 'Write by email',
+        whatsappLabel: 'Message on WhatsApp',
+      },
+      footer: { tagline: 'Decisions · Coherence · Stability', email: 'nb.admin@icloud.com' },
+    },
+    es: {
+      nav: { advisors: 'Advisors', capabilities: 'Capacidades', contact: 'Conversemos' },
+      hero: {
+        title: 'Claridad independiente antes de la ejecución crítica.',
+        sub: 'NB acompaña a líderes en momentos de decisión operacional crítica — revisando riesgos, reduciendo ambigüedades y mejorando la calidad de la decisión antes de la ejecución.',
+      },
+      recognition: {
+        eyebrow: 'Reconocimiento',
+        title: 'Las decisiones avanzan rápido. La claridad no siempre las acompaña.',
+        points: [
+          'Decisiones críticas que avanzan demasiado rápido.',
+          'Muchas reuniones, poca claridad real.',
+          'Ejecución en curso, con pérdida de confianza.',
+          'Riesgos relevantes aún no explicitados.',
+        ],
+      },
+      perspective: {
+        eyebrow: 'La perspectiva de NB',
+        title: 'Una capa independiente de claridad ejecutiva.',
+        body: 'NB no sustituye al liderazgo, no vende metodología pesada ni añade complejidad. Existe para aportar una lectura externa e imparcial antes de que la ejecución haga que una decisión sea demasiado costosa de corregir.',
+      },
+      how: {
+        eyebrow: 'Cómo actúa NB',
+        title: 'Un proceso discreto, aplicado allí donde se toma la decisión.',
+        items: [
+          'Una lectura independiente de la decisión, sin informes extensos.',
+          'Conversaciones directas con quien decide, no con comités.',
+          'Recomendaciones objetivas, aplicables antes de que la ejecución avance.',
+        ],
+      },
+      capabilities: {
+        eyebrow: 'Donde agregamos valor',
+        title: 'Cuatro capacidades estratégicas.',
+        descs: [
+          'Una segunda lectura independiente de una decisión crítica antes de que se convierta en ejecución.',
+          'Una visión clara de dónde divergen la narrativa de la organización y su realidad operativa.',
+          'Intervención quirúrgica y dirigida allí donde la ejecución empezó a perder terreno.',
+          'El mismo criterio, ampliado mediante arquitectura digital e inteligencia aplicada.',
+        ],
+      },
+      advisors: {
+        eyebrow: 'Los advisors de NB',
+        title: 'Construida sobre dos trayectorias complementarias.',
+        franciscoRole: 'Advisor — Decisiones y Estabilidad',
+        franciscoBio: 'Décadas liderando operaciones industriales complejas — fabricación, calidad, ingeniería y logística — en multinacionales como Nestlé, Nestlé Purina, WABCO North America y Johnson Controls, con experiencia internacional en Suiza, Chile y América Latina.',
+        raimundoRole: 'Advisor — Arquitectura Digital e IA',
+        raimundoBio: 'Décadas de experiencia en liderazgo industrial, hoy ampliando esa trayectoria mediante la arquitectura digital, la automatización y la inteligencia artificial aplicada a los negocios.',
+      },
+      cta: {
+        title: 'Hablemos sobre una decisión importante.',
+        sub: 'Cuando la ejecución puede hacer que una decisión sea demasiado costosa de corregir, NB entra antes para aportar claridad.',
+        emailLabel: 'Escribir por correo',
+        whatsappLabel: 'Hablar por WhatsApp',
+      },
+      footer: { tagline: 'Decisions · Coherence · Stability', email: 'nb.admin@icloud.com' },
+    },
+  };
+
+  // Capability names are brand terms — kept in English across all languages.
+  pillarNames = ['Decision Review', 'Coherence Reading', 'Stability Restoration', 'AI World COO'];
+
+  langs = ['pt', 'en', 'es'];
+
+  setLang = (l) => {
+    this.setState({ lang: l });
+  };
+
+  renderVals() {
+    const lang = this.state.lang;
+    const copy = this.content[lang];
+    const pillars = this.pillarNames.map((name, i) => ({ n: i + 1, name, desc: copy.capabilities.descs[i] }));
+    return {
+      copy,
+      lang,
+      pillars,
+      isPt: lang === 'pt',
+      isEn: lang === 'en',
+      isEs: lang === 'es',
+      setPt: () => this.setLang('pt'),
+      setEn: () => this.setLang('en'),
+      setEs: () => this.setLang('es'),
+      dsNamespace: 'NBConsultingDesignSystem_ea9d93',
+    };
+  }
+}
+
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "NbLanding";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // A document that owns its print CSS (the doc-page starter injects the
+  // meta at runtime; hand-rolled print designs author it) gets no automatic
+  // page geometry and keeps its forced breaks: strip the injected default
+  // @page — write time cannot see a runtime-injected meta — skip the frame
+  // override below, and skip the fakepage-flattening further down. What
+  // still applies: the print baseline and break-hygiene defaults (no @page
+  // in either; low specificity, so the document's own print CSS wins) and
+  // the break-inside relaxation on >page elements (avoid on those cannot
+  // be honored whoever authored it).
+  var ownsPrint = !!document.querySelector('meta[name="omelette-owns-print" i]');
+  if (ownsPrint) {
+    var dst = document.querySelector('style[data-omelette-print-defaults]');
+    if (dst && dst.textContent) {
+      dst.textContent = dst.textContent.replace(/@page\b[^{}]*\{[^}]*\}/, '');
+    }
+  }
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…} or declared print ownership
+  // via the meta above. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+  // Name-presence check, case-insensitive — the same contract as the
+  // instant-PDF path's runtime check in deck-stage-export.ts. The name is
+  // a string literal here because that file interpolates this script into
+  // its print script, so importing a shared constant from it would be a
+  // cycle; measure.test.ts pins the literal so the two cannot drift apart
+  // silently.
+  var ownsPrint = !!document.querySelector('meta[name="omelette-owns-print" i]');
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false, ownsPrint: ownsPrint } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false, ownsPrint: ownsPrint } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage, ownsPrint: ownsPrint };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: off unless the page opts in via data-om-multi-frame on the
+  // stop element — the explicit opt-in is what guards against card grids
+  // and pricing tables that match the geometry but aren't separate
+  // canvases. Two ways to name the frames, explicit first:
+  // 1. Descendants marked data-om-frame-export (the social-frames starter
+  //    marks each asset frame; shells/panels around them are presentation,
+  //    so nesting is expected). Document order.
+  // 2. Fallback, no marked descendants: direct children with an authored px
+  //    width AND height (the original geometry heuristic).
+  // Frames may be different sizes (a gallery mixes 1080×1920 stories with
+  // 728×90 banners); data-om-frame-label rides along for export filenames.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var visOk = function (e) {
+      var cs; try { cs = getComputedStyle(e); } catch (err) { return false; }
+      return cs.display !== 'none' && cs.visibility !== 'hidden' && cs.position !== 'fixed';
+    };
+    // A frame's crop is its VISUAL box — never the scrollHeight-inflated
+    // rect that rectOf computes for page roots. Shadow-DOM hover controls
+    // (image-slot's Replace bar parks 29px below its host) and similar
+    // escaping UI contribute scrollable overflow to the frame, and the
+    // inflated height both squashes the nominal-size resize and drags
+    // content below the frame into the crop. Zoom-independent; bit every
+    // slot-bearing frame.
+    var frameRectOf = function (e) {
+      var r = e.getBoundingClientRect();
+      return { left: r.left + sx, top: r.top + sy, width: r.width, height: r.height };
+    };
+    var pushCand = function (list, e) {
+      if (!visOk(e)) return;
+      var rc = frameRectOf(e);
+      if (rc.width < 2 || rc.height < 2) return;
+      var lbl = e.getAttribute('data-om-frame-label');
+      if (lbl) rc.label = lbl;
+      list.push(rc);
+    };
+    var cands = [];
+    var marked = el.querySelectorAll('[data-om-frame-export]');
+    if (marked.length) {
+      for (var mk = 0; mk < marked.length; mk++) pushCand(cands, marked[mk]);
+    } else {
+      for (var k = 0; k < el.children.length; k++) {
+        var ch = el.children[k];
+        if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+        pushCand(cands, ch);
+      }
+    }
+    if (cands.length >= 2) {
+      return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (!ownsPrint && __m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          // An owns-print doc's forced breaks are intentional sheet
+          // boundaries, never fake-paged simulation — don't strip them.
+          // The break-inside relaxation above still applies: avoid on a
+          // >page element is impossible to honor whoever authored it.
+          if (
+            !ownsPrint &&
+            (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always')
+          ) {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

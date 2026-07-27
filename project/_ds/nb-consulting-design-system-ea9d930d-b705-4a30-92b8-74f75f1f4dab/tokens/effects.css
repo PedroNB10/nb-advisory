@@ -1,0 +1,21 @@
+/* NB Consulting — Effects: radius, borders, shadow, motion
+   Executive/sober direction: near-flat surfaces, hairline borders instead of
+   drop shadows, slow and minimal motion, no bounce. */
+
+:root {
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  --border-hairline-dark: 1px solid var(--color-border-on-dark);
+  --border-hairline-dark-subtle: 1px solid var(--color-border-on-dark-subtle);
+  --border-hairline-light: 1px solid var(--color-border-on-light);
+
+  /* Shadows are used sparingly — one soft elevation for cards, nothing louder */
+  --shadow-card-dark: 0 24px 64px -32px rgba(0, 0, 0, 0.55);
+  --shadow-card-light: 0 16px 48px -24px rgba(18, 20, 26, 0.12);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --transition-standard: 420ms var(--ease-standard);
+  --transition-fast: 200ms var(--ease-standard);
+}

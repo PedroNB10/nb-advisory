@@ -1,0 +1,305 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/cards/**",
+              "components/core/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Inter))/i]",
+        "message": "Font not provided by the design system. Available: Inter."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='AdvisorCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:photoSrc|name|role|bio|key|ref|className|style|children)$/]",
+        "message": "<AdvisorCard> doesn't accept that prop. Declared props: photoSrc, name, role, bio."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|variant|size|as|href|onClick|type|disabled|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: children, variant, size, as, href, onClick, type, disabled."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|secondary|ghost)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'secondary' | 'ghost'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md|lg)$/]",
+        "message": "<Button> size must be one of 'sm' | 'md' | 'lg'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='as'] > Literal[value!=/^(?:button|a)$/]",
+        "message": "<Button> as must be one of 'button' | 'a'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:button|submit)$/]",
+        "message": "<Button> type must be one of 'button' | 'submit'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Divider'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|width|align|key|ref|className|style|children)$/]",
+        "message": "<Divider> doesn't accept that prop. Declared props: tone, width, align."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Divider'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:gold|silver|ink)$/]",
+        "message": "<Divider> tone must be one of 'gold' | 'silver' | 'ink'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Divider'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|center)$/]",
+        "message": "<Divider> align must be one of 'left' | 'center'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|index|tone|key|ref|className|style|children)$/]",
+        "message": "<Eyebrow> doesn't accept that prop. Declared props: children, index, tone."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:gold|silver|ink)$/]",
+        "message": "<Eyebrow> tone must be one of 'gold' | 'silver' | 'ink'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PillarCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:index|name|description|key|ref|className|style|children)$/]",
+        "message": "<PillarCard> doesn't accept that prop. Declared props: index, name, description."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "AdvisorCard": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "Divider": {
+        "replaces": []
+      },
+      "Eyebrow": {
+        "replaces": []
+      },
+      "PillarCard": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--border-hairline-dark",
+      "--border-hairline-dark-subtle",
+      "--border-hairline-light",
+      "--color-accent-gold",
+      "--color-accent-gold-bright",
+      "--color-accent-gold-hover",
+      "--color-bg-dark",
+      "--color-bg-dark-elevated",
+      "--color-bg-light",
+      "--color-border-on-dark",
+      "--color-border-on-dark-subtle",
+      "--color-border-on-light",
+      "--color-focus-ring",
+      "--color-link",
+      "--color-link-hover",
+      "--color-link-on-dark",
+      "--color-link-on-dark-hover",
+      "--color-surface-dark-card",
+      "--color-surface-light-card",
+      "--color-text-on-dark-primary",
+      "--color-text-on-dark-secondary",
+      "--color-text-on-dark-tertiary",
+      "--color-text-on-light-primary",
+      "--color-text-on-light-secondary",
+      "--color-text-on-light-tertiary",
+      "--content-gutter",
+      "--content-max-width",
+      "--content-max-width-narrow",
+      "--ease-standard",
+      "--font-sans",
+      "--font-serif",
+      "--fs-body",
+      "--fs-body-lg",
+      "--fs-display-1",
+      "--fs-display-2",
+      "--fs-h3",
+      "--fs-label",
+      "--fs-small",
+      "--fw-bold",
+      "--fw-medium",
+      "--fw-regular",
+      "--fw-semibold",
+      "--lh-normal",
+      "--lh-relaxed",
+      "--lh-snug",
+      "--lh-tight",
+      "--ls-label",
+      "--ls-normal",
+      "--ls-tight",
+      "--nb-gold-100",
+      "--nb-gold-300",
+      "--nb-gold-500",
+      "--nb-gold-600",
+      "--nb-gold-bright",
+      "--nb-ink-300",
+      "--nb-ink-500",
+      "--nb-ink-700",
+      "--nb-ink-900",
+      "--nb-navy-600",
+      "--nb-navy-700",
+      "--nb-navy-800",
+      "--nb-navy-900",
+      "--nb-navy-950",
+      "--nb-paper",
+      "--nb-silver-100",
+      "--nb-silver-300",
+      "--nb-silver-500",
+      "--nb-silver-700",
+      "--nb-warm-white",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-sm",
+      "--section-padding-y",
+      "--shadow-card-dark",
+      "--shadow-card-light",
+      "--space-1",
+      "--space-10",
+      "--space-11",
+      "--space-12",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--space-9",
+      "--transition-fast",
+      "--transition-standard"
+    ],
+    "tokenKinds": {
+      "--nb-navy-950": "color",
+      "--nb-navy-900": "color",
+      "--nb-navy-800": "color",
+      "--nb-navy-700": "color",
+      "--nb-navy-600": "color",
+      "--nb-gold-100": "color",
+      "--nb-gold-300": "color",
+      "--nb-gold-500": "color",
+      "--nb-gold-600": "color",
+      "--nb-gold-bright": "color",
+      "--nb-silver-100": "color",
+      "--nb-silver-300": "color",
+      "--nb-silver-500": "color",
+      "--nb-silver-700": "color",
+      "--nb-warm-white": "color",
+      "--nb-paper": "color",
+      "--nb-ink-900": "color",
+      "--nb-ink-700": "color",
+      "--nb-ink-500": "color",
+      "--nb-ink-300": "color",
+      "--color-bg-dark": "color",
+      "--color-bg-dark-elevated": "color",
+      "--color-surface-dark-card": "color",
+      "--color-bg-light": "color",
+      "--color-surface-light-card": "color",
+      "--color-text-on-dark-primary": "font",
+      "--color-text-on-dark-secondary": "font",
+      "--color-text-on-dark-tertiary": "font",
+      "--color-text-on-light-primary": "font",
+      "--color-text-on-light-secondary": "font",
+      "--color-text-on-light-tertiary": "font",
+      "--color-accent-gold": "color",
+      "--color-accent-gold-bright": "color",
+      "--color-accent-gold-hover": "color",
+      "--color-border-on-dark": "color",
+      "--color-border-on-dark-subtle": "color",
+      "--color-border-on-light": "color",
+      "--color-link": "color",
+      "--color-link-hover": "color",
+      "--color-link-on-dark": "color",
+      "--color-link-on-dark-hover": "color",
+      "--color-focus-ring": "color",
+      "--font-serif": "font",
+      "--font-sans": "font",
+      "--fw-regular": "font",
+      "--fw-medium": "font",
+      "--fw-semibold": "font",
+      "--fw-bold": "font",
+      "--fs-display-1": "other",
+      "--fs-display-2": "other",
+      "--fs-h3": "other",
+      "--fs-body-lg": "font",
+      "--fs-body": "font",
+      "--fs-small": "font",
+      "--fs-label": "font",
+      "--lh-tight": "font",
+      "--lh-snug": "font",
+      "--lh-normal": "font",
+      "--lh-relaxed": "font",
+      "--ls-tight": "font",
+      "--ls-normal": "font",
+      "--ls-label": "font",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--space-9": "spacing",
+      "--space-10": "spacing",
+      "--space-11": "spacing",
+      "--space-12": "spacing",
+      "--content-max-width": "spacing",
+      "--content-max-width-narrow": "spacing",
+      "--content-gutter": "spacing",
+      "--section-padding-y": "spacing",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--border-hairline-dark": "color",
+      "--border-hairline-dark-subtle": "color",
+      "--border-hairline-light": "color",
+      "--shadow-card-dark": "shadow",
+      "--shadow-card-light": "shadow",
+      "--ease-standard": "other",
+      "--transition-standard": "color",
+      "--transition-fast": "color"
+    },
+    "fontFamilies": [
+      "Inter"
+    ]
+  }
+}

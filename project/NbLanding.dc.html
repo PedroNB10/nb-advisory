@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<rect width="200" height="200" fill="#04091a"/>
+<text x="100" y="118" font-family="Georgia, serif" font-size="64" fill="#c9a353" text-anchor="middle" letter-spacing="4">NB</text>
+</svg>
+</template>
+<x-dc>
+<!-- @template name="NB Executive Landing Page" description="Bilingual (PT/EN) single-page executive landing — Recognition, Perspective, How NB Acts, Capabilities, Advisors, Conversation" -->
+<helmet>
+  <script src="./ds-base.js"></script>
+  <link rel="stylesheet" href="_ds/nb-consulting-design-system-ea9d930d-b705-4a30-92b8-74f75f1f4dab/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/nb-consulting-design-system-ea9d930d-b705-4a30-92b8-74f75f1f4dab/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/nb-consulting-design-system-ea9d930d-b705-4a30-92b8-74f75f1f4dab/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/nb-consulting-design-system-ea9d930d-b705-4a30-92b8-74f75f1f4dab/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/nb-consulting-design-system-ea9d930d-b705-4a30-92b8-74f75f1f4dab/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/nb-consulting-design-system-ea9d930d-b705-4a30-92b8-74f75f1f4dab/styles.css">
+  <link rel="icon" href="assets/logos/favicon-32.png">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--nb-navy-950); }
+    .nb-page { font-family: var(--font-sans); }
+    .nb-section { padding: var(--space-9) var(--content-gutter); }
+    .nb-inner { max-width: var(--content-max-width); margin: 0 auto; }
+    .nb-inner-narrow { max-width: var(--content-max-width-narrow); margin: 0 auto; }
+    a { color: var(--color-link-on-dark); }
+    a:hover { color: var(--color-link-on-dark-hover); }
+    @media (prefers-reduced-motion: no-preference) {
+      .nb-reveal { opacity: 0; transform: translateY(16px); transition: opacity 700ms var(--ease-standard), transform 700ms var(--ease-standard); }
+      .nb-reveal[data-shown] { opacity: 1; transform: none; }
+    }
+    .nb-navlink { color: var(--nb-silver-300); transition: color var(--transition-fast); }
+    .nb-navlink:hover { color: var(--nb-silver-100); }
+    .nb-langtab {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.12em;
+      color: var(--nb-silver-700); padding: 7px 11px; transition: color var(--transition-fast), background var(--transition-fast);
+    }
+    .nb-langtab:hover { color: var(--nb-silver-300); }
+    .nb-langtab[data-active="true"] { color: var(--nb-navy-950); background: var(--nb-silver-300); }
+  </style>
+</helmet>
+
+<div class="nb-page" id="top" data-document-role="page" data-label="NB Consulting — Executive Landing">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 20; background: rgba(4,9,26,0.86); backdrop-filter: blur(6px); border-bottom: 1px solid var(--color-border-on-dark-subtle);">
+    <div class="nb-inner" style="display:flex; align-items:center; justify-content:space-between; gap: 24px; padding: 20px var(--content-gutter);">
+      <a href="#top" style="display:flex; align-items:center; gap: 12px; text-decoration:none;">
+        <img src="assets/logos/nb-symbol-silver.png" alt="NB" style="height: 30px; width: auto; object-fit: contain;">
+        <span style="font-family: var(--font-sans); font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--nb-silver-500);">Consulting</span>
+      </a>
+      <nav style="display:flex; align-items:center; gap: 28px;">
+        <a href="#capabilities" class="nb-navlink" style="font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; text-decoration:none;">{{ copy.nav.capabilities }}</a>
+        <a href="#advisors" class="nb-navlink" style="font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; text-decoration:none;">{{ copy.nav.advisors }}</a>
+        <a href="#contact" class="nb-navlink" style="font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; text-decoration:none; color: var(--color-accent-gold);">{{ copy.nav.contact }}</a>
+        <span style="display:inline-flex; align-items:center; border: 1px solid var(--color-border-on-dark-subtle); border-radius: var(--radius-sm); overflow:hidden;">
+          <button class="nb-langtab" data-active="{{ isPt }}" onclick="{{ setPt }}">PT</button>
+          <button class="nb-langtab" data-active="{{ isEn }}" onclick="{{ setEn }}">EN</button>
+          <button class="nb-langtab" data-active="{{ isEs }}" onclick="{{ setEs }}">ES</button>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 1. OPENING — brand + positioning -->
+  <section data-screen-label="01 — Opening" style="min-height: 92vh; display:flex; align-items:center; justify-content:center; background: var(--nb-navy-950) url('./assets/backgrounds/navy-web-1920.png') center/cover no-repeat; text-align:center; padding: var(--space-9) var(--content-gutter);">
+    <div class="nb-inner-narrow">
+      <img src="assets/logos/nb-symbol-silver.png" alt="NB" style="height: 80px; width:auto; object-fit:contain; margin-bottom: var(--space-7);">
+      <h1 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-1); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: 0 0 var(--space-5);">{{ copy.hero.title }}</h1>
+      <p style="font-family: var(--font-sans); font-size: var(--fs-body-lg); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin: 0 auto; max-width: 560px;">{{ copy.hero.sub }}</p>
+    </div>
+  </section>
+
+  <!-- 2. RECOGNITION — the decision-maker's pain -->
+  <section data-screen-label="02 — Recognition" class="nb-section" style="background: var(--nb-navy-900);">
+    <div class="nb-inner nb-reveal" data-shown="{{ true }}">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="1" tone="gold" hint-size="100%,32px">{{ copy.recognition.eyebrow }}</x-import>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: var(--space-5) 0 var(--space-8); max-width: 760px;">{{ copy.recognition.title }}</h2>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-7);">
+        <sc-for list="{{ copy.recognition.points }}" as="point" hint-placeholder-count="4">
+          <p style="font-family: var(--font-sans); font-size: var(--fs-body); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin:0; padding-top: var(--space-4); border-top: 1px solid var(--color-border-on-dark-subtle);">{{ point }}</p>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. THE NB PERSPECTIVE -->
+  <section data-screen-label="03 — NB Perspective" class="nb-section" style="background: var(--nb-navy-950);">
+    <div class="nb-inner">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="2" tone="gold" hint-size="100%,32px">{{ copy.perspective.eyebrow }}</x-import>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-9); margin-top: var(--space-5); align-items:start;">
+        <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin:0;">{{ copy.perspective.title }}</h2>
+        <p style="font-family: var(--font-sans); font-size: var(--fs-body-lg); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin:0;">{{ copy.perspective.body }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. HOW NB ACTS -->
+  <section data-screen-label="04 — How NB Acts" class="nb-section" style="background: var(--nb-navy-900);">
+    <div class="nb-inner">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="3" tone="gold" hint-size="100%,32px">{{ copy.how.eyebrow }}</x-import>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: var(--space-5) 0 var(--space-8); max-width: 760px;">{{ copy.how.title }}</h2>
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8);">
+        <sc-for list="{{ copy.how.items }}" as="item" hint-placeholder-count="3">
+          <div>
+            <div style="width: 40px; height: 1px; background: var(--nb-gold-500); margin-bottom: var(--space-5);"></div>
+            <p style="font-family: var(--font-sans); font-size: var(--fs-body); line-height: var(--lh-relaxed); color: var(--nb-silver-300); margin:0;">{{ item }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CAPABILITIES / PILLARS -->
+  <section id="capabilities" data-screen-label="05 — Capabilities" class="nb-section" style="background: var(--nb-navy-950);">
+    <div class="nb-inner">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="4" tone="gold" hint-size="100%,32px">{{ copy.capabilities.eyebrow }}</x-import>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: var(--space-5) 0 var(--space-8); max-width: 760px;">{{ copy.capabilities.title }}</h2>
+      <div style="display:grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--color-border-on-dark);">
+        <sc-for list="{{ pillars }}" as="pillar" hint-placeholder-count="4">
+          <x-import component-from-global-scope="{{ dsNamespace }}.PillarCard" index="{{ pillar.n }}" name="{{ pillar.name }}" description="{{ pillar.desc }}" hint-size="100%,320px" style="border-right: 1px solid var(--color-border-on-dark);"></x-import>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. ADVISORS -->
+  <section id="advisors" data-screen-label="06 — Advisors" class="nb-section" style="background: var(--nb-navy-900);">
+    <div class="nb-inner">
+      <x-import component-from-global-scope="{{ dsNamespace }}.Eyebrow" index="5" tone="gold" hint-size="100%,32px">{{ copy.advisors.eyebrow }}</x-import>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: var(--space-5) 0 var(--space-9); max-width: 760px;">{{ copy.advisors.title }}</h2>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-9);">
+        <div style="display:flex; flex-direction:column; gap: var(--space-5);">
+          <x-import component-from-global-scope="{{ dsNamespace }}.AdvisorCard" name="Francisco Barboza" role="{{ copy.advisors.franciscoRole }}" bio="{{ copy.advisors.franciscoBio }}" hint-size="100%,560px"></x-import>
+          <a href="https://www.linkedin.com/in/francisco-ueliton/" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap: 8px; align-self:flex-start; font-family: var(--font-sans); font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--color-accent-gold); text-decoration:none; padding-top: var(--space-4); border-top: 1px solid var(--color-border-on-dark-subtle);">{{ copy.advisors.linkedinLabel }}<span aria-hidden="true" style="font-family: var(--font-sans);">&#8599;</span></a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap: var(--space-5);">
+          <x-import component-from-global-scope="{{ dsNamespace }}.AdvisorCard" name="Raimundo Barboza" role="{{ copy.advisors.raimundoRole }}" bio="{{ copy.advisors.raimundoBio }}" hint-size="100%,560px"></x-import>
+          <a href="https://www.linkedin.com/in/raimundo-almeida-barboza-7114113a" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap: 8px; align-self:flex-start; font-family: var(--font-sans); font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--color-accent-gold); text-decoration:none; padding-top: var(--space-4); border-top: 1px solid var(--color-border-on-dark-subtle);">{{ copy.advisors.linkedinLabel }}<span aria-hidden="true" style="font-family: var(--font-sans);">&#8599;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CONVERSATION / CTA -->
+  <section id="contact" data-screen-label="07 — Conversation" class="nb-section" style="background: var(--nb-navy-950) url('./assets/backgrounds/navy-web-1920.png') center/cover no-repeat; text-align:center;">
+    <div class="nb-inner-narrow">
+      <div style="width: 40px; height: 1px; background: var(--nb-gold-500); margin: 0 auto var(--space-6);"></div>
+      <h2 style="font-family: var(--font-serif); font-weight: var(--fw-regular); font-size: var(--fs-display-2); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: 0 0 var(--space-5);">{{ copy.cta.title }}</h2>
+      <p style="font-family: var(--font-sans); font-size: var(--fs-body-lg); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin: 0 0 var(--space-8);">{{ copy.cta.sub }}</p>
+      <div style="display:flex; gap: var(--space-5); justify-content:center; flex-wrap:wrap;">
+        <x-import component-from-global-scope="{{ dsNamespace }}.Button" variant="primary" size="lg" as="a" href="mailto:nb.admin@icloud.com" hint-size="240px,54px">{{ copy.cta.emailLabel }}</x-import>
+        <x-import component-from-global-scope="{{ dsNamespace }}.Button" variant="secondary" size="lg" as="a" href="https://wa.me/5511950498530" hint-size="200px,54px">{{ copy.cta.whatsappLabel }}</x-import>
+      </div>
+      <p style="font-family: var(--font-sans); font-size: var(--fs-small); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--nb-silver-700); margin: var(--space-6) 0 0;">{{ copy.cta.note }}</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid var(--color-border-on-dark-subtle); padding: var(--space-6) var(--content-gutter); background: var(--nb-navy-950);">
+    <div class="nb-inner" style="display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; gap: var(--space-4);">
+      <img src="assets/logos/nb-symbol-silver.png" alt="NB" style="height: 22px; width:auto; object-fit:contain; justify-self:start;">
+      <span style="font-family: var(--font-sans); font-size: var(--fs-small); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--nb-silver-700); text-align:center;">{{ copy.footer.tagline }}</span>
+      <span style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--nb-silver-700); justify-self:end;">{{ copy.footer.email }}</span>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'pt' };
+
+  content = {
+    pt: {
+      nav: { advisors: 'Advisors', capabilities: 'Frentes', contact: 'Conversa' },
+      hero: {
+        title: 'Clareza independente antes da execução crítica.',
+        sub: 'A NB apoia líderes em momentos de decisão operacional crítica — revisando riscos, reduzindo ambiguidades e melhorando a qualidade da decisão antes da execução.',
+      },
+      recognition: {
+        eyebrow: 'Reconhecimento da situação',
+        title: 'Decisões avançam rápido. A clareza nem sempre acompanha.',
+        points: [
+          'Decisões críticas avançando rápido demais.',
+          'Muitas reuniões, pouca clareza real.',
+          'Execução em andamento, com perda de confiança.',
+          'Riscos relevantes ainda não explicitados.',
+        ],
+      },
+      perspective: {
+        eyebrow: 'A perspectiva da NB',
+        title: 'Uma camada independente de clareza executiva.',
+        body: 'A NB não substitui a liderança, não vende metodologia pesada e não adiciona complexidade. Ela existe para trazer uma leitura externa e isenta antes que a execução torne uma decisão cara demais para corrigir.',
+      },
+      how: {
+        eyebrow: 'Como a NB atua',
+        title: 'Um processo discreto, aplicado diretamente onde a decisão acontece.',
+        items: [
+          'Uma leitura independente da decisão, sem relatórios extensos.',
+          'Conversas diretas com quem decide — não com comitês.',
+          'Recomendações objetivas, aplicáveis antes da execução avançar.',
+        ],
+      },
+      capabilities: {
+        eyebrow: 'Onde agregamos valor',
+        title: 'Quatro capacidades estratégicas.',
+        descs: [
+          'Uma segunda leitura independente de uma decisão crítica antes que ela se torne execução.',
+          'Uma visão clara de onde a narrativa da organização e sua realidade operacional divergem.',
+          'Intervenção cirúrgica e direcionada onde a execução começou a perder terreno.',
+          'O mesmo julgamento, ampliado por arquitetura digital e inteligência aplicada.',
+        ],
+      },
+      advisors: {
+        eyebrow: 'Os advisors da NB',
+        title: 'Construída sobre duas trajetórias complementares.',
+        franciscoRole: 'Advisor — Decisões & Estabilidade',
+        franciscoBio: 'Décadas liderando operações industriais complexas — fabricação, qualidade, engenharia e logística — em multinacionais como Nestlé, Nestlé Purina, WABCO North America e Johnson Controls. Sua trajetória atravessa Suíça, Chile e América Latina, onde construiu e estabilizou operações em períodos de mudança acelerada. Traz o julgamento de quem já esteve na linha de decisão — no instante anterior a uma escolha crítica se tornar execução.',
+        raimundoRole: 'Advisor — Arquitetura Digital & IA',
+        raimundoBio: 'Décadas de liderança industrial, hoje ampliadas por meio da arquitetura digital, da automação e da inteligência artificial aplicada aos negócios. Traduz a experiência operacional em sistemas — conectando como uma decisão é tomada à forma como ela é executada e medida. Seu foco é a disciplina que mantém a tecnologia a serviço da decisão, e não o contrário.',
+        linkedinLabel: 'Perfil no LinkedIn',
+      },
+      cta: {
+        title: 'Uma conversa confidencial antes da decisão.',
+        sub: 'Quando a execução pode tornar uma decisão cara demais para corrigir, a NB entra antes para trazer clareza.',
+        note: 'Reservado · Direto com os advisors · Sem formulários',
+        emailLabel: 'Escrever por e-mail',
+        whatsappLabel: 'Falar no WhatsApp',
+      },
+      footer: { tagline: 'Decisions · Coherence · Stability', email: 'nb.admin@icloud.com' },
+    },
+    en: {
+      nav: { advisors: 'Advisors', capabilities: 'Capabilities', contact: 'Conversation' },
+      hero: {
+        title: 'Independent clarity before critical execution.',
+        sub: 'NB supports leaders at moments of critical operational decision — reviewing risk, reducing ambiguity and improving decision quality before execution begins.',
+      },
+      recognition: {
+        eyebrow: 'Recognition',
+        title: 'Decisions move fast. Clarity does not always keep pace.',
+        points: [
+          'Critical decisions advancing too quickly.',
+          'Many meetings, little real clarity.',
+          'Execution underway, confidence eroding.',
+          'Material risks still unspoken.',
+        ],
+      },
+      perspective: {
+        eyebrow: 'The NB perspective',
+        title: 'An independent layer of executive clarity.',
+        body: "NB does not replace leadership, sell heavy methodology, or add complexity. It exists to bring an outside, unconflicted read before execution makes a decision too expensive to correct.",
+      },
+      how: {
+        eyebrow: 'How NB acts',
+        title: 'A discreet process, applied directly where the decision happens.',
+        items: [
+          'An independent read on the decision — no lengthy reports.',
+          'Direct conversations with the decision-maker, not committees.',
+          'Objective recommendations, actionable before execution advances.',
+        ],
+      },
+      capabilities: {
+        eyebrow: 'Where we add value',
+        title: 'Four strategic capabilities.',
+        descs: [
+          'An independent second read on a critical call before it becomes execution.',
+          "A clear view of where the organization's story and its operating reality diverge.",
+          'Targeted, surgical intervention where execution has begun losing ground.',
+          'The same judgment, extended through digital architecture and applied intelligence.',
+        ],
+      },
+      advisors: {
+        eyebrow: "NB's advisors",
+        title: 'Built on two complementary trajectories.',
+        franciscoRole: 'Advisor — Decisions & Stability',
+        franciscoBio: 'Decades leading complex industrial operations — manufacturing, quality, engineering and logistics — across multinationals including Nestlé, Nestlé Purina, WABCO North America and Johnson Controls. His work spans Switzerland, Chile and Latin America, where he built and stabilized operations through periods of rapid change. He brings the judgment of someone who has stood in the decision line — in the moment before a critical choice becomes execution.',
+        raimundoRole: 'Advisor — Digital Architecture & AI',
+        raimundoBio: 'Decades of industrial leadership, now extended through digital architecture, automation and artificial intelligence applied to business. He translates operational experience into systems — connecting how a decision is made to how it is executed and measured. His focus is the discipline that keeps technology in service of the decision, not the other way around.',
+        linkedinLabel: 'View on LinkedIn',
+      },
+      cta: {
+        title: 'A confidential conversation before the decision.',
+        sub: 'When execution can make a decision too expensive to correct, NB steps in beforehand to bring clarity.',
+        note: 'Confidential · Directly with the advisors · No forms',
+        emailLabel: 'Write by email',
+        whatsappLabel: 'Message on WhatsApp',
+      },
+      footer: { tagline: 'Decisions · Coherence · Stability', email: 'nb.admin@icloud.com' },
+    },
+    es: {
+      nav: { advisors: 'Advisors', capabilities: 'Capacidades', contact: 'Conversemos' },
+      hero: {
+        title: 'Claridad independiente antes de la ejecución crítica.',
+        sub: 'NB acompaña a líderes en momentos de decisión operacional crítica — revisando riesgos, reduciendo ambigüedades y mejorando la calidad de la decisión antes de la ejecución.',
+      },
+      recognition: {
+        eyebrow: 'Reconocimiento',
+        title: 'Las decisiones avanzan rápido. La claridad no siempre las acompaña.',
+        points: [
+          'Decisiones críticas que avanzan demasiado rápido.',
+          'Muchas reuniones, poca claridad real.',
+          'Ejecución en curso, con pérdida de confianza.',
+          'Riesgos relevantes aún no explicitados.',
+        ],
+      },
+      perspective: {
+        eyebrow: 'La perspectiva de NB',
+        title: 'Una capa independiente de claridad ejecutiva.',
+        body: 'NB no sustituye al liderazgo, no vende metodología pesada ni añade complejidad. Existe para aportar una lectura externa e imparcial antes de que la ejecución haga que una decisión sea demasiado costosa de corregir.',
+      },
+      how: {
+        eyebrow: 'Cómo actúa NB',
+        title: 'Un proceso discreto, aplicado allí donde se toma la decisión.',
+        items: [
+          'Una lectura independiente de la decisión, sin informes extensos.',
+          'Conversaciones directas con quien decide, no con comités.',
+          'Recomendaciones objetivas, aplicables antes de que la ejecución avance.',
+        ],
+      },
+      capabilities: {
+        eyebrow: 'Donde agregamos valor',
+        title: 'Cuatro capacidades estratégicas.',
+        descs: [
+          'Una segunda lectura independiente de una decisión crítica antes de que se convierta en ejecución.',
+          'Una visión clara de dónde divergen la narrativa de la organización y su realidad operativa.',
+          'Intervención quirúrgica y dirigida allí donde la ejecución empezó a perder terreno.',
+          'El mismo criterio, ampliado mediante arquitectura digital e inteligencia aplicada.',
+        ],
+      },
+      advisors: {
+        eyebrow: 'Los advisors de NB',
+        title: 'Construida sobre dos trayectorias complementarias.',
+        franciscoRole: 'Advisor — Decisiones y Estabilidad',
+        franciscoBio: 'Décadas liderando operaciones industriales complejas — fabricación, calidad, ingeniería y logística — en multinacionales como Nestlé, Nestlé Purina, WABCO North America y Johnson Controls. Su trayectoria abarca Suiza, Chile y América Latina, donde construyó y estabilizó operaciones en períodos de cambio acelerado. Aporta el criterio de quien ha estado en la línea de decisión — en el instante previo a que una elección crítica se convierta en ejecución.',
+        raimundoRole: 'Advisor — Arquitectura Digital e IA',
+        raimundoBio: 'Décadas de liderazgo industrial, hoy ampliadas mediante la arquitectura digital, la automatización y la inteligencia artificial aplicada a los negocios. Traduce la experiencia operativa en sistemas — conectando cómo se toma una decisión con la forma en que se ejecuta y se mide. Su foco es la disciplina que mantiene la tecnología al servicio de la decisión, y no al revés.',
+        linkedinLabel: 'Perfil en LinkedIn',
+      },
+      cta: {
+        title: 'Una conversación confidencial antes de la decisión.',
+        sub: 'Cuando la ejecución puede hacer que una decisión sea demasiado costosa de corregir, NB entra antes para aportar claridad.',
+        note: 'Reservado · Directo con los advisors · Sin formularios',
+        emailLabel: 'Escribir por correo',
+        whatsappLabel: 'Hablar por WhatsApp',
+      },
+      footer: { tagline: 'Decisions · Coherence · Stability', email: 'nb.admin@icloud.com' },
+    },
+  };
+
+  // Capability names are brand terms — kept in English across all languages.
+  pillarNames = ['Decision Review', 'Coherence Reading', 'Stability Restoration', 'AI World COO'];
+
+  langs = ['pt', 'en', 'es'];
+
+  setLang = (l) => {
+    this.setState({ lang: l });
+  };
+
+  renderVals() {
+    const lang = this.state.lang;
+    const copy = this.content[lang];
+    const pillars = this.pillarNames.map((name, i) => ({ n: i + 1, name, desc: copy.capabilities.descs[i] }));
+    return {
+      copy,
+      lang,
+      pillars,
+      isPt: lang === 'pt',
+      isEn: lang === 'en',
+      isEs: lang === 'es',
+      setPt: () => this.setLang('pt'),
+      setEn: () => this.setLang('en'),
+      setEs: () => this.setLang('es'),
+      dsNamespace: 'NBConsultingDesignSystem_ea9d93',
+    };
+  }
+}
+
+</script>
+</body>
+</html>
