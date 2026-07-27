@@ -1,0 +1,30 @@
+/* Global reset + base element styles.
+   Design tokens (colors, spacing, typography, effects, fonts) are imported
+   separately in BaseLayout.astro — see src/styles/tokens/README.md. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--nb-navy-950);
+  font-family: var(--font-sans);
+  color: var(--nb-silver-300);
+}
+
+a {
+  color: var(--color-link-on-dark);
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: var(--color-link-on-dark-hover);
+  }
+}

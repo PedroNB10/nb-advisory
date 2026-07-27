@@ -1,0 +1,33 @@
+/* NB Consulting — Typography tokens */
+
+:root {
+  /* ---- Families ---- */
+  --font-serif: Georgia, 'Times New Roman', Times, serif; /* hero statements, section headlines */
+  --font-sans: 'Inter', Arial, Helvetica, sans-serif; /* body, navigation, UI */
+
+  /* ---- Weights ---- */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium: 500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold: 700; /* @kind font */
+
+  /* ---- Scale — generous, executive, few sizes ---- */
+  --fs-display-1: clamp(2.75rem, 2rem + 3.5vw, 5.5rem); /* @kind other */
+  --fs-display-2: clamp(2.125rem, 1.7rem + 1.9vw, 3.5rem); /* @kind other */
+  --fs-h3: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem); /* @kind other */
+  --fs-body-lg: 1.25rem; /* @kind font */
+  --fs-body: 1.125rem; /* @kind font */
+  --fs-small: 0.9375rem; /* @kind font */
+  --fs-label: 0.8125rem; /* @kind font */
+
+  /* ---- Line height ---- */
+  --lh-tight: 1.08; /* @kind font */
+  --lh-snug: 1.25; /* @kind font */
+  --lh-normal: 1.55; /* @kind font */
+  --lh-relaxed: 1.7; /* @kind font */
+
+  /* ---- Letter spacing ---- */
+  --ls-tight: -0.01em; /* @kind font */
+  --ls-normal: 0; /* @kind font */
+  --ls-label: 0.16em; /* @kind font */
+}

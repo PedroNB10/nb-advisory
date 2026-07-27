@@ -1,0 +1,23 @@
+/* NB Consulting — Spacing & layout tokens
+   Premium minimalism reads through restraint: few sizes, lots of unused
+   space, wide margins. Section padding is intentionally large. */
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 160px;
+  --space-12: 200px;
+
+  --content-max-width: 1120px;
+  --content-max-width-narrow: 680px;
+  --content-gutter: clamp(24px, 6vw, 96px); /* @kind spacing */
+  --section-padding-y: clamp(80px, 11vw, 176px);
+}

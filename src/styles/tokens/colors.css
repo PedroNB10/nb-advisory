@@ -1,0 +1,63 @@
+/* NB Consulting — Color tokens
+   Sampled directly from official brand assets (navy background, silver
+   monogram, gold wordmark). Base scales first, semantic aliases below. */
+
+:root {
+  /* ---- Navy (primary surface) ---- */
+  --nb-navy-950: #04091a; /* deepest — page background, sampled from Fundo_Navy_NB */
+  --nb-navy-900: #070e22;
+  --nb-navy-800: #0b1530; /* elevated dark surface / cards */
+  --nb-navy-700: #12203f; /* hover surface, secondary panels */
+  --nb-navy-600: #1c2e52; /* borders, dividers on dark */
+
+  /* ---- Gold (accent — sparing use) ---- */
+  --nb-gold-100: #f4e6c3;
+  --nb-gold-300: #e2c37f;
+  --nb-gold-500: #c9a353; /* primary accent gold — muted, premium */
+  --nb-gold-600: #a8843d;
+  --nb-gold-bright: #f0c878; /* matches wordmark gold exactly; for logo-adjacent moments only */
+
+  /* ---- Silver (logo metal + dark-surface text) ---- */
+  --nb-silver-100: #ffffff;
+  --nb-silver-300: #e7e9ee;
+  --nb-silver-500: #b9bfc9;
+  --nb-silver-700: #7c8494;
+
+  /* ---- Warm neutrals (light / long-read surfaces) ---- */
+  --nb-warm-white: #faf8f3;
+  --nb-paper: #f2efe6;
+  --nb-ink-900: #12141a;
+  --nb-ink-700: #3b3f49;
+  --nb-ink-500: #6b707c;
+  --nb-ink-300: #a3a8b2;
+
+  /* ================= Semantic aliases ================= */
+  --color-bg-dark: var(--nb-navy-950);
+  --color-bg-dark-elevated: var(--nb-navy-800);
+  --color-surface-dark-card: var(--nb-navy-700);
+  --color-bg-light: var(--nb-warm-white);
+  --color-surface-light-card: #ffffff;
+
+  --color-text-on-dark-primary: var(--nb-silver-100);
+  --color-text-on-dark-secondary: var(--nb-silver-500);
+  --color-text-on-dark-tertiary: var(--nb-silver-700);
+
+  --color-text-on-light-primary: var(--nb-ink-900);
+  --color-text-on-light-secondary: var(--nb-ink-700);
+  --color-text-on-light-tertiary: var(--nb-ink-500);
+
+  --color-accent-gold: var(--nb-gold-500);
+  --color-accent-gold-bright: var(--nb-gold-bright);
+  --color-accent-gold-hover: var(--nb-gold-300);
+
+  --color-border-on-dark: rgba(201, 163, 83, 0.22); /* gold hairline */
+  --color-border-on-dark-subtle: rgba(233, 236, 241, 0.12); /* silver hairline */
+  --color-border-on-light: rgba(18, 20, 26, 0.1);
+
+  --color-link: var(--nb-gold-600);
+  --color-link-hover: var(--nb-gold-500);
+  --color-link-on-dark: var(--nb-gold-300);
+  --color-link-on-dark-hover: var(--nb-gold-bright);
+
+  --color-focus-ring: var(--nb-gold-300);
+}
