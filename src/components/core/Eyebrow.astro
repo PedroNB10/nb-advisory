@@ -1,0 +1,59 @@
+---
+export type EyebrowTone = 'gold' | 'silver';
+
+export interface Props {
+  /** The "sequence of perception" marker — the section's position in the narrative. */
+  index?: number;
+  tone?: EyebrowTone;
+}
+
+const { index, tone = 'gold' } = Astro.props;
+const formattedIndex = typeof index === 'number' ? String(index).padStart(2, '0') : undefined;
+---
+
+<p class={`nb-eyebrow nb-eyebrow--${tone}`}>
+  {
+    formattedIndex && (
+      <span class="nb-eyebrow__index" aria-hidden="true">
+        {formattedIndex}
+      </span>
+    )
+  }
+  <span class="nb-eyebrow__label"><slot /></span>
+</p>
+
+<style>
+  .nb-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+  }
+
+  .nb-eyebrow__index {
+    color: var(--nb-silver-700);
+  }
+
+  .nb-eyebrow__index::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1px;
+    margin-inline-start: var(--space-3);
+    background: var(--nb-gold-500);
+    vertical-align: middle;
+  }
+
+  .nb-eyebrow--gold .nb-eyebrow__label {
+    color: var(--nb-gold-500);
+  }
+
+  .nb-eyebrow--silver .nb-eyebrow__label {
+    color: var(--nb-silver-500);
+  }
+</style>

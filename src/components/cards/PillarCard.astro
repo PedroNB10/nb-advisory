@@ -1,0 +1,49 @@
+---
+export interface Props {
+  /** 1-based position among the four strategic capabilities. */
+  index: number;
+  name: string;
+  description: string;
+}
+
+const { index, name, description } = Astro.props;
+const formattedIndex = String(index).padStart(2, '0');
+---
+
+<article class="nb-pillar-card">
+  <span class="nb-pillar-card__index" aria-hidden="true">{formattedIndex}</span>
+  <h3 class="nb-pillar-card__name">{name}</h3>
+  <p class="nb-pillar-card__description">{description}</p>
+</article>
+
+<style>
+  .nb-pillar-card {
+    padding: var(--space-7) var(--space-6);
+  }
+
+  .nb-pillar-card__index {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--fs-label);
+    letter-spacing: var(--ls-label);
+    color: var(--nb-gold-500);
+    margin-bottom: var(--space-5);
+  }
+
+  .nb-pillar-card__name {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-snug);
+    color: var(--nb-silver-100);
+    margin: 0 0 var(--space-4);
+  }
+
+  .nb-pillar-card__description {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: var(--lh-relaxed);
+    color: var(--nb-silver-500);
+    margin: 0;
+  }
+</style>

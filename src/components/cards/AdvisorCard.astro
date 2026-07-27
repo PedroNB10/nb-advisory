@@ -1,0 +1,98 @@
+---
+export interface Props {
+  name: string;
+  role: string;
+  bio: string;
+  /** Path to a square portrait. Falls back to a placeholder when omitted. */
+  photo?: string;
+}
+
+const { name, role, bio, photo } = Astro.props;
+---
+
+<article class="nb-advisor-card">
+  <div class="nb-advisor-card__photo">
+    {
+      photo ? (
+        <img
+          src={photo}
+          alt={`Portrait of ${name}`}
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div
+          class="nb-advisor-card__photo-placeholder"
+          role="img"
+          aria-label={`${name} — photograph pending`}
+        >
+          Photograph pending
+        </div>
+      )
+    }
+  </div>
+  <h3 class="nb-advisor-card__name">{name}</h3>
+  <p class="nb-advisor-card__role">{role}</p>
+  <p class="nb-advisor-card__bio">{bio}</p>
+</article>
+
+<style>
+  .nb-advisor-card__photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: var(--space-5);
+    overflow: hidden;
+    background: var(--nb-navy-800);
+  }
+
+  .nb-advisor-card__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nb-advisor-card__photo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: var(--border-hairline-dark-subtle);
+    font-family: var(--font-sans);
+    font-size: var(--fs-label);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--nb-silver-700);
+    text-align: center;
+    padding: var(--space-4);
+  }
+
+  .nb-advisor-card__name {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-snug);
+    color: var(--nb-silver-100);
+    margin: 0 0 var(--space-2);
+  }
+
+  .nb-advisor-card__role {
+    font-family: var(--font-sans);
+    font-size: var(--fs-label);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--nb-gold-500);
+    margin: 0 0 var(--space-5);
+  }
+
+  .nb-advisor-card__bio {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: var(--lh-relaxed);
+    color: var(--nb-silver-500);
+    margin: 0;
+  }
+</style>

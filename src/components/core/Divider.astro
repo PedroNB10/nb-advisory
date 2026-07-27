@@ -1,0 +1,38 @@
+---
+export type DividerTone = 'gold' | 'silver-subtle';
+export type DividerAlign = 'left' | 'center';
+
+export interface Props {
+  tone?: DividerTone;
+  align?: DividerAlign;
+  /** Width in pixels. NB's hairline rule is always short, never a full-width rule. */
+  width?: number;
+}
+
+const { tone = 'gold', align = 'left', width = 40 } = Astro.props;
+---
+
+<div
+  class={`nb-divider nb-divider--${tone} nb-divider--${align}`}
+  style={`--nb-divider-width: ${width}px;`}
+>
+</div>
+
+<style>
+  .nb-divider {
+    width: var(--nb-divider-width, 40px);
+    height: 1px;
+  }
+
+  .nb-divider--gold {
+    background: var(--nb-gold-500);
+  }
+
+  .nb-divider--silver-subtle {
+    background: var(--color-border-on-dark-subtle);
+  }
+
+  .nb-divider--center {
+    margin-inline: auto;
+  }
+</style>
