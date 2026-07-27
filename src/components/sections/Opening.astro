@@ -29,7 +29,18 @@ const { hero } = Astro.props;
     justify-content: center;
     min-height: 92vh;
     min-height: 92svh;
-    background: var(--nb-navy-950) url('/backgrounds/navy-web-1920.png') center / cover no-repeat;
+    background-color: var(--nb-navy-950);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* PNG fallback for browsers without image-set() support; AVIF/WebP
+       otherwise override it below (~1-4KB vs. ~90KB for the PNG). */
+    background-image: url('/backgrounds/navy-web-1920.png');
+    background-image: image-set(
+      url('/backgrounds/navy-web-1920.avif') type('image/avif'),
+      url('/backgrounds/navy-web-1920.webp') type('image/webp'),
+      url('/backgrounds/navy-web-1920.png') type('image/png')
+    );
     text-align: center;
     padding: var(--space-9) var(--content-gutter);
   }
