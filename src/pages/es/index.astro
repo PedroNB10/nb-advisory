@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getContent } from '../../i18n';
+
+const locale = 'es' as const;
+const content = getContent(locale);
+---
+
+<BaseLayout locale={locale} title="NB Consulting" description={content.hero.sub}>
+  <main
+    style="min-height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; padding: var(--content-gutter);"
+  >
+    <div>
+      <h1
+        style={`font-family: var(--font-serif); font-size: var(--fs-display-1); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: 0 0 var(--space-5);`}
+      >
+        {content.hero.title}
+      </h1>
+      <p
+        style={`font-family: var(--font-sans); font-size: var(--fs-body-lg); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin: 0;`}
+      >
+        {content.hero.sub}
+      </p>
+    </div>
+  </main>
+</BaseLayout>

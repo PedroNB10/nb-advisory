@@ -1,0 +1,20 @@
+import { env } from './env';
+import { LOCALES, DEFAULT_LOCALE, type Locale } from '../i18n';
+
+/** This is a single-page site, so every locale's canonical URL is just its root. */
+export function getCanonicalUrl(locale: Locale): string {
+  return `${env.PUBLIC_SITE_URL}/${locale}`;
+}
+
+export interface AlternateLink {
+  hreflang: string;
+  href: string;
+}
+
+/** Reciprocal hreflang links for every locale, plus x-default pointing at the primary one. */
+export function getAlternateLinks(): readonly AlternateLink[] {
+  return [
+    ...LOCALES.map((locale) => ({ hreflang: locale, href: getCanonicalUrl(locale) })),
+    { hreflang: 'x-default', href: getCanonicalUrl(DEFAULT_LOCALE) },
+  ];
+}
