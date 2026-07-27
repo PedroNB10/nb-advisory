@@ -26,10 +26,17 @@ const { perspective } = Astro.props;
 
   .nb-perspective__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    gap: var(--space-9);
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
     margin-top: var(--space-5);
+  }
+
+  @media (min-width: 1024px) {
+    .nb-perspective__grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: var(--space-9);
+    }
   }
 
   .nb-perspective__title {

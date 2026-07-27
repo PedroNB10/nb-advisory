@@ -57,13 +57,60 @@ const pillars = [
     margin: var(--space-5) 0 var(--space-8);
   }
 
+  /*
+   * Dividers are hairline borders, not a background pattern, so they must be
+   * redeclared per breakpoint rather than left to cascade: a border-right
+   * that's correct in a 4-column row becomes a stray rule mid-grid once the
+   * grid rewraps to 2 or 1 columns. Each block below is self-contained.
+   */
   .nb-capabilities__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-left: var(--border-hairline-dark);
+    grid-template-columns: 1fr;
   }
 
   .nb-capabilities__cell {
-    border-right: var(--border-hairline-dark);
+    border-top: var(--border-hairline-dark);
+  }
+
+  .nb-capabilities__cell:first-child {
+    border-top: none;
+  }
+
+  @media (min-width: 768px) {
+    .nb-capabilities__grid {
+      grid-template-columns: repeat(2, 1fr);
+      border-left: var(--border-hairline-dark);
+    }
+
+    .nb-capabilities__cell {
+      border-top: none;
+      border-right: var(--border-hairline-dark);
+    }
+
+    .nb-capabilities__cell:nth-child(n + 3) {
+      border-top: var(--border-hairline-dark);
+    }
+
+    .nb-capabilities__cell:nth-child(2n) {
+      border-right: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nb-capabilities__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .nb-capabilities__cell {
+      border-top: none;
+    }
+
+    .nb-capabilities__cell:nth-child(2n) {
+      border-right: var(--border-hairline-dark);
+    }
+
+    .nb-capabilities__cell:last-child {
+      border-right: none;
+    }
   }
 </style>

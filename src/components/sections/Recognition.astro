@@ -35,6 +35,9 @@ const { recognition } = Astro.props;
   }
 
   .nb-recognition__grid {
+    /* auto-fit already collapses to one column once the viewport can't fit
+       two 220px tracks (~375–768px), so this needs no breakpoint overrides —
+       verified at 375, 768, 1024, 1440 and 1920. */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--space-7);

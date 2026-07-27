@@ -12,7 +12,7 @@ const { footer } = Astro.props;
   <div class="nb-inner nb-footer__inner">
     <img
       src="/logos/nb-symbol-silver.png"
-      alt="NB"
+      alt=""
       width="2048"
       height="1571"
       class="nb-footer__mark"
@@ -31,16 +31,17 @@ const { footer } = Astro.props;
 
   .nb-footer__inner {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
+    text-align: center;
   }
 
   .nb-footer__mark {
     height: 22px;
     width: auto;
     object-fit: contain;
-    justify-self: start;
   }
 
   .nb-footer__tagline {
@@ -49,13 +50,26 @@ const { footer } = Astro.props;
     letter-spacing: var(--ls-label);
     text-transform: uppercase;
     color: var(--nb-silver-700);
-    text-align: center;
   }
 
   .nb-footer__email {
     font-family: var(--font-sans);
     font-size: var(--fs-small);
     color: var(--nb-silver-700);
-    justify-self: end;
+  }
+
+  @media (min-width: 768px) {
+    .nb-footer__inner {
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--space-4);
+    }
+
+    .nb-footer__mark {
+      justify-self: start;
+    }
+
+    .nb-footer__email {
+      justify-self: end;
+    }
   }
 </style>

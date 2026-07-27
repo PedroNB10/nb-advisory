@@ -44,8 +44,14 @@ const { how } = Astro.props;
 
   .nb-how__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .nb-how__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   .nb-how__item :global(.nb-divider) {

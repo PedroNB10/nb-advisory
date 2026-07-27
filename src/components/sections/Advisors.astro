@@ -72,8 +72,15 @@ const { advisors } = Astro.props;
 
   .nb-advisors__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-9);
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .nb-advisors__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-9);
+    }
   }
 
   .nb-advisors__column {

@@ -15,7 +15,7 @@ const { locale, nav } = Astro.props;
     <a href="#top" class="nb-header__brand">
       <img
         src="/logos/nb-symbol-silver.png"
-        alt="NB"
+        alt="NB Consulting"
         width="2048"
         height="1571"
         class="nb-header__mark"
@@ -23,9 +23,11 @@ const { locale, nav } = Astro.props;
       <span class="nb-header__wordmark">Consulting</span>
     </a>
     <nav class="nb-header__nav" aria-label="Primary">
-      <a href="#capabilities" class="nb-header__navlink">{nav.capabilities}</a>
-      <a href="#advisors" class="nb-header__navlink">{nav.advisors}</a>
-      <a href="#contact" class="nb-header__navlink nb-header__navlink--accent">{nav.contact}</a>
+      <div class="nb-header__links">
+        <a href="#capabilities" class="nb-header__navlink">{nav.capabilities}</a>
+        <a href="#advisors" class="nb-header__navlink">{nav.advisors}</a>
+        <a href="#contact" class="nb-header__navlink nb-header__navlink--accent">{nav.contact}</a>
+      </div>
       <LanguageTabs locale={locale} />
     </nav>
   </div>
@@ -45,8 +47,15 @@ const { locale, nav } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-6);
-    padding: 20px var(--content-gutter);
+    gap: var(--space-4);
+    padding: 16px var(--content-gutter);
+  }
+
+  @media (min-width: 768px) {
+    .nb-header__inner {
+      gap: var(--space-6);
+      padding: 20px var(--content-gutter);
+    }
   }
 
   .nb-header__brand {
@@ -73,7 +82,27 @@ const { locale, nav } = Astro.props;
   .nb-header__nav {
     display: flex;
     align-items: center;
-    gap: var(--space-7);
+    gap: var(--space-4);
+  }
+
+  /* Below md there's no room for three anchor links plus three language
+     tabs. Per the brand's stated aversion to hamburger drawers, drop the
+     in-page jump links on mobile and keep only the logo + language tabs;
+     they return once the header has room at md. */
+  .nb-header__links {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .nb-header__nav {
+      gap: var(--space-7);
+    }
+
+    .nb-header__links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-7);
+    }
   }
 
   .nb-header__navlink {
