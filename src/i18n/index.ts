@@ -3,7 +3,18 @@ import { pt } from './content/pt';
 import { en } from './content/en';
 import { es } from './content/es';
 
-export type { SiteContent } from './types';
+export type {
+  SiteContent,
+  NavContent,
+  HeroContent,
+  RecognitionContent,
+  PerspectiveContent,
+  HowContent,
+  CapabilitiesContent,
+  AdvisorsContent,
+  CtaContent,
+  FooterContent,
+} from './types';
 export { PILLAR_NAMES } from './pillars';
 
 /** Locales in nav order — pt is first because it's the primary/default locale. */

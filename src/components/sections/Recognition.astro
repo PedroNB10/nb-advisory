@@ -1,0 +1,52 @@
+---
+import Eyebrow from '../core/Eyebrow.astro';
+import type { RecognitionContent } from '../../i18n';
+
+export interface Props {
+  recognition: RecognitionContent;
+}
+
+const { recognition } = Astro.props;
+---
+
+<section class="nb-section nb-recognition" aria-labelledby="nb-recognition-title">
+  <div class="nb-inner nb-reveal">
+    <Eyebrow index={1} tone="gold">{recognition.eyebrow}</Eyebrow>
+    <h2 id="nb-recognition-title" class="nb-recognition__title">{recognition.title}</h2>
+    <div class="nb-recognition__grid">
+      {recognition.points.map((point) => <p class="nb-recognition__point">{point}</p>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .nb-recognition {
+    background: var(--nb-navy-900);
+  }
+
+  .nb-recognition__title {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-display-2);
+    line-height: var(--lh-tight);
+    color: var(--nb-silver-100);
+    max-width: 760px;
+    margin: var(--space-5) 0 var(--space-8);
+  }
+
+  .nb-recognition__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-7);
+  }
+
+  .nb-recognition__point {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: var(--lh-relaxed);
+    color: var(--nb-silver-500);
+    margin: 0;
+    padding-top: var(--space-4);
+    border-top: var(--border-hairline-dark-subtle);
+  }
+</style>

@@ -1,0 +1,71 @@
+---
+import Divider from '../core/Divider.astro';
+import Button from '../core/Button.astro';
+import { CONTACT } from '../../config/contact';
+import type { CtaContent } from '../../i18n';
+
+export interface Props {
+  cta: CtaContent;
+}
+
+const { cta } = Astro.props;
+---
+
+<section id="contact" class="nb-section nb-conversation" aria-labelledby="nb-conversation-title">
+  <div class="nb-inner-narrow nb-conversation__inner">
+    <Divider tone="gold" align="center" width={40} />
+    <h2 id="nb-conversation-title" class="nb-conversation__title">{cta.title}</h2>
+    <p class="nb-conversation__sub">{cta.sub}</p>
+    <div class="nb-conversation__actions">
+      <Button variant="primary" size="lg" as="a" href={CONTACT.emailHref}>{cta.emailLabel}</Button>
+      <Button variant="secondary" size="lg" as="a" href={CONTACT.whatsappHref}>
+        {cta.whatsappLabel}
+      </Button>
+    </div>
+    <p class="nb-conversation__note">{cta.note}</p>
+  </div>
+</section>
+
+<style>
+  .nb-conversation {
+    background: var(--nb-navy-950) url('/backgrounds/navy-web-1920.png') center / cover no-repeat;
+    text-align: center;
+  }
+
+  .nb-conversation__inner :global(.nb-divider) {
+    margin-bottom: var(--space-6);
+  }
+
+  .nb-conversation__title {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-display-2);
+    line-height: var(--lh-tight);
+    color: var(--nb-silver-100);
+    margin: 0 0 var(--space-5);
+  }
+
+  .nb-conversation__sub {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-relaxed);
+    color: var(--nb-silver-500);
+    margin: 0 0 var(--space-8);
+  }
+
+  .nb-conversation__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+  }
+
+  .nb-conversation__note {
+    font-family: var(--font-sans);
+    font-size: var(--fs-small);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--nb-silver-700);
+    margin: var(--space-6) 0 0;
+  }
+</style>

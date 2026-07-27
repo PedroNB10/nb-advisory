@@ -1,0 +1,74 @@
+---
+import { LOCALES, type Locale } from '../../i18n';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<div class="nb-language-tabs" role="group" aria-label="Language">
+  {
+    LOCALES.map((loc) => (
+      <a
+        href={`/${loc}`}
+        data-lang-tab
+        class="nb-language-tabs__tab"
+        aria-current={loc === locale ? 'page' : undefined}
+        data-active={loc === locale ? 'true' : 'false'}
+      >
+        {loc.toUpperCase()}
+      </a>
+    ))
+  }
+</div>
+
+<script>
+  // Static per-locale pages can't know the visitor's in-page hash at build
+  // time, so preserve it client-side: switching from /pt#advisors should
+  // land on /en#advisors, not /en.
+  const hash = window.location.hash;
+  if (hash) {
+    for (const tab of document.querySelectorAll<HTMLAnchorElement>('[data-lang-tab]')) {
+      tab.href = tab.getAttribute('href') + hash;
+    }
+  }
+</script>
+
+<style>
+  .nb-language-tabs {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid var(--color-border-on-dark-subtle);
+    border-radius: var(--radius-sm);
+  }
+
+  .nb-language-tabs__tab {
+    padding: 7px 11px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: var(--ls-label);
+    color: var(--nb-silver-700);
+    text-decoration: none;
+    transition:
+      color var(--transition-fast),
+      background var(--transition-fast);
+  }
+
+  .nb-language-tabs__tab[data-active='true'] {
+    color: var(--nb-navy-950);
+    background: var(--nb-silver-300);
+  }
+
+  @media (hover: hover) {
+    .nb-language-tabs__tab:hover {
+      color: var(--nb-silver-300);
+    }
+
+    .nb-language-tabs__tab[data-active='true']:hover {
+      color: var(--nb-navy-950);
+    }
+  }
+</style>

@@ -1,0 +1,69 @@
+---
+import Eyebrow from '../core/Eyebrow.astro';
+import PillarCard from '../cards/PillarCard.astro';
+import { PILLAR_NAMES, type CapabilitiesContent } from '../../i18n';
+
+export interface Props {
+  capabilities: CapabilitiesContent;
+}
+
+const { capabilities } = Astro.props;
+
+// Destructured (not indexed by a loop variable) so TypeScript knows every
+// field is a defined string, not `string | undefined` — both source tuples
+// are fixed-length by type, so this can't go out of bounds.
+const [name1, name2, name3, name4] = PILLAR_NAMES;
+const [desc1, desc2, desc3, desc4] = capabilities.descs;
+const pillars = [
+  { index: 1, name: name1, description: desc1 },
+  { index: 2, name: name2, description: desc2 },
+  { index: 3, name: name3, description: desc3 },
+  { index: 4, name: name4, description: desc4 },
+];
+---
+
+<section
+  id="capabilities"
+  class="nb-section nb-capabilities"
+  aria-labelledby="nb-capabilities-title"
+>
+  <div class="nb-inner">
+    <Eyebrow index={4} tone="gold">{capabilities.eyebrow}</Eyebrow>
+    <h2 id="nb-capabilities-title" class="nb-capabilities__title">{capabilities.title}</h2>
+    <div class="nb-capabilities__grid">
+      {
+        pillars.map((pillar) => (
+          <div class="nb-capabilities__cell">
+            <PillarCard index={pillar.index} name={pillar.name} description={pillar.description} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .nb-capabilities {
+    background: var(--nb-navy-950);
+  }
+
+  .nb-capabilities__title {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-display-2);
+    line-height: var(--lh-tight);
+    color: var(--nb-silver-100);
+    max-width: 760px;
+    margin: var(--space-5) 0 var(--space-8);
+  }
+
+  .nb-capabilities__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-left: var(--border-hairline-dark);
+  }
+
+  .nb-capabilities__cell {
+    border-right: var(--border-hairline-dark);
+  }
+</style>

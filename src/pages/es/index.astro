@@ -1,5 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Opening from '../../components/sections/Opening.astro';
+import Recognition from '../../components/sections/Recognition.astro';
+import Perspective from '../../components/sections/Perspective.astro';
+import HowNbActs from '../../components/sections/HowNbActs.astro';
+import Capabilities from '../../components/sections/Capabilities.astro';
+import Advisors from '../../components/sections/Advisors.astro';
+import Conversation from '../../components/sections/Conversation.astro';
 import { getContent } from '../../i18n';
 
 const locale = 'es' as const;
@@ -7,20 +16,15 @@ const content = getContent(locale);
 ---
 
 <BaseLayout locale={locale} title="NB Consulting" description={content.hero.sub}>
-  <main
-    style="min-height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; padding: var(--content-gutter);"
-  >
-    <div>
-      <h1
-        style={`font-family: var(--font-serif); font-size: var(--fs-display-1); line-height: var(--lh-tight); color: var(--nb-silver-100); margin: 0 0 var(--space-5);`}
-      >
-        {content.hero.title}
-      </h1>
-      <p
-        style={`font-family: var(--font-sans); font-size: var(--fs-body-lg); line-height: var(--lh-relaxed); color: var(--nb-silver-500); margin: 0;`}
-      >
-        {content.hero.sub}
-      </p>
-    </div>
+  <Header locale={locale} nav={content.nav} />
+  <main id="main">
+    <Opening hero={content.hero} />
+    <Recognition recognition={content.recognition} />
+    <Perspective perspective={content.perspective} />
+    <HowNbActs how={content.how} />
+    <Capabilities capabilities={content.capabilities} />
+    <Advisors advisors={content.advisors} />
+    <Conversation cta={content.cta} />
   </main>
+  <Footer footer={content.footer} />
 </BaseLayout>

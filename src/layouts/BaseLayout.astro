@@ -35,6 +35,27 @@ const alternateLinks = getAlternateLinks();
     <slot name="head" />
   </head>
   <body>
+    <a href="#main" class="nb-skip-link">Skip to content</a>
     <slot />
+    <script>
+      const revealEls = Array.from(document.querySelectorAll('.nb-reveal'));
+      if (revealEls.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.setAttribute('data-shown', 'true');
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15 },
+        );
+        for (const el of revealEls) {
+          el.classList.add('nb-reveal--armed');
+          observer.observe(el);
+        }
+      }
+    </script>
   </body>
 </html>

@@ -1,0 +1,61 @@
+---
+import type { HeroContent } from '../../i18n';
+
+export interface Props {
+  hero: HeroContent;
+}
+
+const { hero } = Astro.props;
+---
+
+<section id="top" class="nb-opening" aria-labelledby="nb-opening-title">
+  <div class="nb-inner-narrow nb-opening__inner">
+    <img
+      src="/logos/nb-symbol-silver.png"
+      alt="NB"
+      width="2048"
+      height="1571"
+      class="nb-opening__mark"
+    />
+    <h1 id="nb-opening-title" class="nb-opening__title">{hero.title}</h1>
+    <p class="nb-opening__sub">{hero.sub}</p>
+  </div>
+</section>
+
+<style>
+  .nb-opening {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 92vh;
+    min-height: 92svh;
+    background: var(--nb-navy-950) url('/backgrounds/navy-web-1920.png') center / cover no-repeat;
+    text-align: center;
+    padding: var(--space-9) var(--content-gutter);
+  }
+
+  .nb-opening__mark {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: var(--space-7);
+  }
+
+  .nb-opening__title {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-display-1);
+    line-height: var(--lh-tight);
+    color: var(--nb-silver-100);
+    margin: 0 0 var(--space-5);
+  }
+
+  .nb-opening__sub {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-relaxed);
+    color: var(--nb-silver-500);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+</style>

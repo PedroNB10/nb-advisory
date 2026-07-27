@@ -1,0 +1,98 @@
+---
+import LanguageTabs from './LanguageTabs.astro';
+import type { Locale, NavContent } from '../../i18n';
+
+export interface Props {
+  locale: Locale;
+  nav: NavContent;
+}
+
+const { locale, nav } = Astro.props;
+---
+
+<header class="nb-header">
+  <div class="nb-inner nb-header__inner">
+    <a href="#top" class="nb-header__brand">
+      <img
+        src="/logos/nb-symbol-silver.png"
+        alt="NB"
+        width="2048"
+        height="1571"
+        class="nb-header__mark"
+      />
+      <span class="nb-header__wordmark">Consulting</span>
+    </a>
+    <nav class="nb-header__nav" aria-label="Primary">
+      <a href="#capabilities" class="nb-header__navlink">{nav.capabilities}</a>
+      <a href="#advisors" class="nb-header__navlink">{nav.advisors}</a>
+      <a href="#contact" class="nb-header__navlink nb-header__navlink--accent">{nav.contact}</a>
+      <LanguageTabs locale={locale} />
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nb-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(4, 9, 26, 0.86);
+    backdrop-filter: blur(6px);
+    border-bottom: var(--border-hairline-dark-subtle);
+  }
+
+  .nb-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: 20px var(--content-gutter);
+  }
+
+  .nb-header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+  }
+
+  .nb-header__mark {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .nb-header__wordmark {
+    font-family: var(--font-sans);
+    font-size: var(--fs-label);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--nb-silver-500);
+  }
+
+  .nb-header__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-7);
+  }
+
+  .nb-header__navlink {
+    font-family: var(--font-sans);
+    font-size: var(--fs-label);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--nb-silver-300);
+    transition: color var(--transition-fast);
+  }
+
+  .nb-header__navlink--accent {
+    color: var(--color-accent-gold);
+  }
+
+  @media (hover: hover) {
+    .nb-header__navlink:hover {
+      color: var(--nb-silver-100);
+    }
+  }
+</style>

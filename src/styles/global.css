@@ -28,3 +28,67 @@ a {
     color: var(--color-link-on-dark-hover);
   }
 }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Shared layout primitives — the design system's own container/section
+   helpers, kept global because every section reuses them verbatim. */
+.nb-section {
+  padding: var(--space-9) var(--content-gutter);
+}
+
+.nb-inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.nb-inner-narrow {
+  max-width: var(--content-max-width-narrow);
+  margin: 0 auto;
+}
+
+.nb-skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 50;
+  padding: var(--space-3) var(--space-5);
+  background: var(--nb-silver-100);
+  color: var(--nb-navy-950);
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: top var(--transition-fast);
+}
+
+.nb-skip-link:focus {
+  top: var(--space-4);
+}
+
+/*
+ * Reveal-on-scroll is a pure progressive enhancement: elements are visible
+ * by default and only become hideable once client JS successfully attaches
+ * the `nb-reveal--armed` class (see BaseLayout's reveal script). If JS never
+ * runs, content simply never loses opacity — it can't get stuck invisible.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .nb-reveal.nb-reveal--armed {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 700ms var(--ease-standard),
+      transform 700ms var(--ease-standard);
+  }
+
+  .nb-reveal.nb-reveal--armed[data-shown] {
+    opacity: 1;
+    transform: none;
+  }
+}

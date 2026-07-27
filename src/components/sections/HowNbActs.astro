@@ -1,0 +1,62 @@
+---
+import Eyebrow from '../core/Eyebrow.astro';
+import Divider from '../core/Divider.astro';
+import type { HowContent } from '../../i18n';
+
+export interface Props {
+  how: HowContent;
+}
+
+const { how } = Astro.props;
+---
+
+<section class="nb-section nb-how" aria-labelledby="nb-how-title">
+  <div class="nb-inner">
+    <Eyebrow index={3} tone="gold">{how.eyebrow}</Eyebrow>
+    <h2 id="nb-how-title" class="nb-how__title">{how.title}</h2>
+    <div class="nb-how__grid">
+      {
+        how.items.map((item) => (
+          <div class="nb-how__item">
+            <Divider tone="gold" align="left" width={40} />
+            <p class="nb-how__item-text">{item}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .nb-how {
+    background: var(--nb-navy-900);
+  }
+
+  .nb-how__title {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-display-2);
+    line-height: var(--lh-tight);
+    color: var(--nb-silver-100);
+    max-width: 760px;
+    margin: var(--space-5) 0 var(--space-8);
+  }
+
+  .nb-how__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .nb-how__item :global(.nb-divider) {
+    margin-bottom: var(--space-5);
+  }
+
+  .nb-how__item-text {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: var(--lh-relaxed);
+    color: var(--nb-silver-300);
+    margin: 0;
+  }
+</style>

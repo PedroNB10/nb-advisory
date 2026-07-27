@@ -1,0 +1,51 @@
+---
+import Eyebrow from '../core/Eyebrow.astro';
+import type { PerspectiveContent } from '../../i18n';
+
+export interface Props {
+  perspective: PerspectiveContent;
+}
+
+const { perspective } = Astro.props;
+---
+
+<section class="nb-section nb-perspective" aria-labelledby="nb-perspective-title">
+  <div class="nb-inner">
+    <Eyebrow index={2} tone="gold">{perspective.eyebrow}</Eyebrow>
+    <div class="nb-perspective__grid">
+      <h2 id="nb-perspective-title" class="nb-perspective__title">{perspective.title}</h2>
+      <p class="nb-perspective__body">{perspective.body}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nb-perspective {
+    background: var(--nb-navy-950);
+  }
+
+  .nb-perspective__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: var(--space-9);
+    margin-top: var(--space-5);
+  }
+
+  .nb-perspective__title {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-display-2);
+    line-height: var(--lh-tight);
+    color: var(--nb-silver-100);
+    margin: 0;
+  }
+
+  .nb-perspective__body {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-relaxed);
+    color: var(--nb-silver-500);
+    margin: 0;
+  }
+</style>

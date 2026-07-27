@@ -1,0 +1,99 @@
+---
+import Eyebrow from '../core/Eyebrow.astro';
+import AdvisorCard from '../cards/AdvisorCard.astro';
+import { ADVISOR_LINKS } from '../../config/contact';
+import { ADVISOR_NAMES } from '../../i18n/advisors';
+import type { AdvisorsContent } from '../../i18n';
+
+export interface Props {
+  advisors: AdvisorsContent;
+}
+
+const { advisors } = Astro.props;
+---
+
+<section id="advisors" class="nb-section nb-advisors" aria-labelledby="nb-advisors-title">
+  <div class="nb-inner">
+    <Eyebrow index={5} tone="gold">{advisors.eyebrow}</Eyebrow>
+    <h2 id="nb-advisors-title" class="nb-advisors__title">{advisors.title}</h2>
+    <div class="nb-advisors__grid">
+      <div class="nb-advisors__column">
+        <AdvisorCard
+          name={ADVISOR_NAMES.francisco}
+          role={advisors.franciscoRole}
+          bio={advisors.franciscoBio}
+          photo="/photos/francisco.jpg"
+        />
+        <a
+          href={ADVISOR_LINKS.francisco.linkedinHref}
+          target="_blank"
+          rel="noopener"
+          class="nb-advisors__linkedin"
+        >
+          {advisors.linkedinLabel}
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+      <div class="nb-advisors__column">
+        <AdvisorCard
+          name={ADVISOR_NAMES.raimundo}
+          role={advisors.raimundoRole}
+          bio={advisors.raimundoBio}
+          photo="/photos/raimundo.jpg"
+        />
+        <a
+          href={ADVISOR_LINKS.raimundo.linkedinHref}
+          target="_blank"
+          rel="noopener"
+          class="nb-advisors__linkedin"
+        >
+          {advisors.linkedinLabel}
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nb-advisors {
+    background: var(--nb-navy-900);
+  }
+
+  .nb-advisors__title {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-display-2);
+    line-height: var(--lh-tight);
+    color: var(--nb-silver-100);
+    max-width: 760px;
+    margin: var(--space-5) 0 var(--space-9);
+  }
+
+  .nb-advisors__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-9);
+  }
+
+  .nb-advisors__column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .nb-advisors__linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    align-self: flex-start;
+    padding-top: var(--space-4);
+    border-top: var(--border-hairline-dark-subtle);
+    font-family: var(--font-sans);
+    font-size: var(--fs-label);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--color-accent-gold);
+    text-decoration: none;
+  }
+</style>
