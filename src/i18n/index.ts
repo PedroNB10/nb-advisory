@@ -32,7 +32,3 @@ const contentByLocale: Record<Locale, SiteContent> = { pt, en, es };
 export function getContent(locale: Locale): SiteContent {
   return contentByLocale[locale];
 }
-
-export function isLocale(value: string): value is Locale {
-  return (LOCALES as readonly string[]).includes(value);
-}

@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { env } from '../lib/env';
 
+/** Generated from PUBLIC_SITE_URL rather than a static file, so the origin only ever lives in `.env`. */
 export const GET: APIRoute = () => {
   const body = `User-agent: *
 Allow: /

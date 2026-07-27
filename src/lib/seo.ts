@@ -26,10 +26,16 @@ const OG_LOCALES: Record<Locale, string> = {
   es: 'es_ES',
 };
 
+/** Maps a routing locale (`pt`) to the tag `og:locale` expects (`pt_BR`). */
 export function getOgLocale(locale: Locale): string {
   return OG_LOCALES[locale];
 }
 
+/**
+ * The PNG, not the AVIF/WebP variants: social-media link-preview crawlers
+ * have unreliable AVIF/WebP support, and this is a one-time-per-share fetch,
+ * not a page-load performance concern.
+ */
 export function getOgImageUrl(): string {
   return `${env.PUBLIC_SITE_URL}/backgrounds/navy-web-1920.png`;
 }
