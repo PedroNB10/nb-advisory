@@ -35,6 +35,14 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+/* #main only receives focus programmatically, via the skip link, so a
+   plain :focus (not :focus-visible) is safe here — it's never the result
+   of a mouse click. */
+main:focus {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
 /* Shared layout primitives — the design system's own container/section
    helpers, kept global because every section reuses them verbatim. */
 .nb-section {

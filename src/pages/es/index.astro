@@ -17,7 +17,7 @@ const content = getContent(locale);
 
 <BaseLayout locale={locale} title="NB Consulting" description={content.hero.sub}>
   <Header locale={locale} nav={content.nav} />
-  <main id="main">
+  <main id="main" tabindex="-1">
     <Opening hero={content.hero} />
     <Recognition recognition={content.recognition} />
     <Perspective perspective={content.perspective} />
