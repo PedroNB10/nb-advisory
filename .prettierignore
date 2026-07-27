@@ -8,3 +8,11 @@ project/
 
 # Original build spec — reference material, left exactly as the user wrote it.
 BUILD-PROMPT.md
+
+# Vendored design tokens — must stay byte-identical to the handoff bundle.
+# fonts.css is intentionally excluded from this list: it's the one file
+# that deliberately differs (self-hosted Inter). See tokens/README.md.
+src/styles/tokens/colors.css
+src/styles/tokens/spacing.css
+src/styles/tokens/typography.css
+src/styles/tokens/effects.css
