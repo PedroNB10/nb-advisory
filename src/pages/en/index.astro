@@ -15,7 +15,15 @@ const locale = 'en' as const;
 const content = getContent(locale);
 ---
 
-<BaseLayout locale={locale} title="NB Consulting" description={content.hero.sub}>
+<BaseLayout
+  locale={locale}
+  title={`${content.hero.title} — NB Consulting`}
+  description={content.hero.sub}
+  advisorRoles={{
+    francisco: content.advisors.franciscoRole,
+    raimundo: content.advisors.raimundoRole,
+  }}
+>
   <Header locale={locale} nav={content.nav} />
   <main id="main" tabindex="-1">
     <Opening hero={content.hero} />

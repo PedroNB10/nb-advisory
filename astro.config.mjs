@@ -21,5 +21,14 @@ export default defineConfig({
       redirectToDefaultLocale: true,
     },
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // The bare root ("/") is a redirect-only stub, not a real page — exclude it.
+      // (Per-page hreflang alternates are already emitted by BaseLayout via
+      // getAlternateLinks() — the integration's own `i18n` option assumes the
+      // default locale is served unprefixed at "/", which doesn't hold here
+      // since `/pt` is the real page and "/" only redirects to it.)
+      filter: (page) => page.replace(/\/$/, '') !== PUBLIC_SITE_URL?.replace(/\/$/, ''),
+    }),
+  ],
 });

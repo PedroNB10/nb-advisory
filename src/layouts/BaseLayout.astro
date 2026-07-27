@@ -6,17 +6,31 @@ import '../styles/tokens/spacing.css';
 import '../styles/tokens/effects.css';
 import '../styles/global.css';
 import type { Locale } from '../i18n';
-import { getCanonicalUrl, getAlternateLinks } from '../lib/seo';
+import { ADVISOR_NAMES } from '../i18n/advisors';
+import { getCanonicalUrl, getAlternateLinks, getOgLocale, getOgImageUrl } from '../lib/seo';
 
 export interface Props {
   locale: Locale;
   title: string;
   description: string;
+  advisorRoles: { francisco: string; raimundo: string };
 }
 
-const { locale, title, description } = Astro.props;
+const { locale, title, description, advisorRoles } = Astro.props;
 const canonicalUrl = getCanonicalUrl(locale);
 const alternateLinks = getAlternateLinks();
+const ogImageUrl = getOgImageUrl();
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'NB Consulting',
+  url: canonicalUrl,
+  member: [
+    { '@type': 'Person', name: ADVISOR_NAMES.francisco, jobTitle: advisorRoles.francisco },
+    { '@type': 'Person', name: ADVISOR_NAMES.raimundo, jobTitle: advisorRoles.raimundo },
+  ],
+};
 ---
 
 <html lang={locale}>
@@ -32,6 +46,14 @@ const alternateLinks = getAlternateLinks();
         <link rel="alternate" hreflang={link.hreflang} href={link.href} />
       ))
     }
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={getOgLocale(locale)} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(organizationJsonLd)} />
     <slot name="head" />
   </head>
   <body>

@@ -18,3 +18,18 @@ export function getAlternateLinks(): readonly AlternateLink[] {
     { hreflang: 'x-default', href: getCanonicalUrl(DEFAULT_LOCALE) },
   ];
 }
+
+/** og:locale uses underscore-separated IETF-ish tags, not our short routing codes. */
+const OG_LOCALES: Record<Locale, string> = {
+  pt: 'pt_BR',
+  en: 'en_US',
+  es: 'es_ES',
+};
+
+export function getOgLocale(locale: Locale): string {
+  return OG_LOCALES[locale];
+}
+
+export function getOgImageUrl(): string {
+  return `${env.PUBLIC_SITE_URL}/backgrounds/navy-web-1920.png`;
+}
