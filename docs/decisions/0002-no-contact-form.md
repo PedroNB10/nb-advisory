@@ -2,7 +2,7 @@
 
 ## Context
 
-NB Consulting's advisory work begins with a direct conversation, not a form
+NB's advisory work begins with a direct conversation, not a form
 submission triaged later. A contact form would also introduce a backend (or
 a third-party form service), spam handling, and a data-retention question
 for a two-person practice that doesn't need any of that.

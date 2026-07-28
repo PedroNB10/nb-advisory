@@ -1,6 +1,6 @@
-# NB Consulting — landing page
+# NB Advisory — landing page
 
-A single-page marketing site for NB Consulting, an industrial-executive
+A single-page marketing site for NB Advisory, an industrial-executive
 advisory practice run by two advisors (Francisco and Raimundo). Static Astro
 site, three routed locales (`/pt`, `/en`, `/es`), no contact form — every call
 to action opens `mailto:` or `wa.me:`. Deployed as a static build to
@@ -116,7 +116,7 @@ directory with no server required.
 - Build command: `pnpm build`
 - Build output directory: `dist`
 - Environment variable: `PUBLIC_SITE_URL` set to the Pages URL Cloudflare
-  assigns you (e.g. `https://nb-consulting-landing.pages.dev`), or your
+  assigns you (e.g. `https://nb-advisory-landing.pages.dev`), or your
   custom domain once one is attached
 
 Every push to the production branch triggers a new deploy automatically.
