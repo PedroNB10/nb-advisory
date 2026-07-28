@@ -54,7 +54,7 @@ export const es = {
   cta: {
     title: 'Una conversación confidencial antes de la decisión.',
     sub: 'Cuando la ejecución puede hacer que una decisión sea demasiado costosa de corregir, NB entra antes para aportar claridad.',
-    note: 'Reservado · Directo con los advisors · Sin formularios',
+    note: 'Reservado · Directo con los advisors',
     emailLabel: 'Escribir por correo',
     whatsappLabel: 'Hablar por WhatsApp',
   },

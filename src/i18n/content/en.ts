@@ -54,7 +54,7 @@ export const en = {
   cta: {
     title: 'A confidential conversation before the decision.',
     sub: 'When execution can make a decision too expensive to correct, NB steps in beforehand to bring clarity.',
-    note: 'Confidential · Directly with the advisors · No forms',
+    note: 'Confidential · Directly with the advisors',
     emailLabel: 'Write by email',
     whatsappLabel: 'Message on WhatsApp',
   },
