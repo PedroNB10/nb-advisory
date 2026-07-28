@@ -24,7 +24,7 @@ const { locale } = Astro.props;
   }
 </div>
 
-<script>
+<script data-astro-rerun is:inline>
   // Static per-locale pages can't know the visitor's in-page hash at build
   // time, so preserve it client-side: switching from /pt#advisors should
   // land on /en#advisors, not /en.
