@@ -1,0 +1,5 @@
+# Cloudflare Pages edge redirect: a real HTTP 301 for link-preview crawlers
+# (Telegram, WhatsApp, Slack, iMessage, ...) that don't follow the
+# <meta http-equiv="refresh"> in the "/" stub page. Browsers get this
+# instead of the 2-second flash of "Redirecting..." text too.
+/ /pt 301
