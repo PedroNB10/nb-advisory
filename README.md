@@ -122,12 +122,17 @@ directory with no server required.
 Every push to the production branch triggers a new deploy automatically.
 
 **Manual/CLI deploy** (e.g. before a Git remote exists), using
-[Wrangler](https://developers.cloudflare.com/workers/wrangler/):
+[Wrangler](https://developers.cloudflare.com/workers/wrangler/), already a
+project dependency (`pnpm exec`, not a global install):
 
 ```sh
+pnpm exec wrangler login                # one-time per machine/account, opens a browser
 pnpm build
-pnpm exec wrangler pages deploy dist --project-name=<your-project-name>
+pnpm exec wrangler pages deploy dist --project-name=nb-advisory-landing
 ```
+
+Deploying under a different Cloudflare account than the one already logged
+in? Re-run `wrangler login` first — it overwrites the stored credentials.
 
 **Attaching a custom domain later:** add it under the Pages project's Custom
 Domains tab, then update `PUBLIC_SITE_URL` in the Pages project's environment
