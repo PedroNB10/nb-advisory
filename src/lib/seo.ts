@@ -32,10 +32,15 @@ export function getOgLocale(locale: Locale): string {
 }
 
 /**
- * The PNG, not the AVIF/WebP variants: social-media link-preview crawlers
- * have unreliable AVIF/WebP support, and this is a one-time-per-share fetch,
- * not a page-load performance concern.
+ * A dedicated 1200×630 card (white bg, logo, tagline) rather than a page
+ * background photo — social-preview crawlers (WhatsApp, LinkedIn, Slack,
+ * Teams) render this verbatim, so it needs to work as a standalone image,
+ * not just as a backdrop behind other text.
  */
 export function getOgImageUrl(): string {
-  return `${env.PUBLIC_SITE_URL}/backgrounds/navy-web-1920.png`;
+  return `${env.PUBLIC_SITE_URL}/og-image.png`;
 }
+
+export const OG_IMAGE_WIDTH = 1200;
+export const OG_IMAGE_HEIGHT = 630;
+export const SITE_NAME = 'NB Advisory';

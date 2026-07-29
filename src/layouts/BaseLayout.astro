@@ -8,7 +8,15 @@ import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import type { Locale } from '../i18n';
 import { ADVISOR_NAMES } from '../i18n/advisors';
-import { getCanonicalUrl, getAlternateLinks, getOgLocale, getOgImageUrl } from '../lib/seo';
+import {
+  getCanonicalUrl,
+  getAlternateLinks,
+  getOgLocale,
+  getOgImageUrl,
+  OG_IMAGE_WIDTH,
+  OG_IMAGE_HEIGHT,
+  SITE_NAME,
+} from '../lib/seo';
 
 export interface Props {
   locale: Locale;
@@ -38,7 +46,12 @@ const organizationJsonLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon-32.png" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-48.png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
@@ -48,12 +61,20 @@ const organizationJsonLd = {
       ))
     }
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={getOgLocale(locale)} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content={String(OG_IMAGE_WIDTH)} />
+    <meta property="og:image:height" content={String(OG_IMAGE_HEIGHT)} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={`${SITE_NAME} — Decisions · Coherence · Stability`} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <script type="application/ld+json" is:inline set:html={JSON.stringify(organizationJsonLd)} />
     <ClientRouter />
     <slot name="head" />
