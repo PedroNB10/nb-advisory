@@ -11,7 +11,7 @@ jobs:
     env:
       # Only needed so `astro build` can construct absolute URLs; this repo
       # never reads a real secret at build time.
-      PUBLIC_SITE_URL: https://nb-consulting-landing.pages.dev
+      PUBLIC_SITE_URL: https://nbcoherence.com
     steps:
       - uses: actions/checkout@v4
 
@@ -29,3 +29,31 @@ jobs:
       - run: pnpm check
 
       - run: pnpm build
+
+  deploy:
+    needs: verify
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC_SITE_URL: https://nbcoherence.com
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+
+      - run: pnpm exec wrangler pages deploy dist --project-name=nb-advisory-landing --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
