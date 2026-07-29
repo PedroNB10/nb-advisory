@@ -1,8 +1,9 @@
 {
-  "name": "nb-consulting-landing",
+  "name": "nb-advisory-landing",
   "private": true,
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@11.17.0",
   "engines": {
     "node": ">=22.12.0"
   },
