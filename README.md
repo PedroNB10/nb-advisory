@@ -16,8 +16,6 @@ Cloudflare Pages.
 ## Setup: clone to running site
 
 ```sh
-git clone <this-repo>
-cd francisco-and-raimundo-profiles
 pnpm install
 cp .env.example .env      # edit PUBLIC_SITE_URL if you have a real domain
 pnpm dev
